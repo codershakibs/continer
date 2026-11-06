@@ -1,0 +1,94 @@
+---
+import BackgroundVideo from '@/components/ui/BackgroundVideo.astro';
+import SectionSubHeading from '@/components/ui/SectionSubHeading.astro';
+import { homeTrackingExpartCardItems, homeTrackingCounterNumberColItems, homeTrackingTextMItems, homeTrackingCounterNumberColItems2 } from '@/data/sections/home-v2';
+---
+<section class="section padding-top-m-bottom-x">
+  <div class="container c-container">
+    <div>
+      <div class="expertise-grid">
+        <div class="tracking-card">
+          <div class="tracking-image-block">
+            <BackgroundVideo name="expertise-video" class="traking-video" control></BackgroundVideo>
+          </div>
+          <div class="overlay-grid">
+            {Array.from({ length: 8 }).map(() => (
+              <div class="col"></div>
+            ))}
+          </div>
+        </div>
+        <div class="tracking-card cell-32d01fb745b59a35495b">
+          <div class="tracking-card-item">
+            <div>
+              <SectionSubHeading variant="left" tag="OUR EXPERTISE" title="Simplify complexity and move with cargo clarity" />
+            </div>
+            <div class="tracking-bottom-grid">
+              {homeTrackingExpartCardItems.map((row) => (
+                <div class="expart-card">
+                  <div class="expart-number-block">
+                    <div class="counter-number-col-wrap">
+                      {row.counterNumberColList.map((cell) => (
+                        <div class="counter-number-col">
+                          <div class={cell.classes}>
+                            {cell.textMList.map((unit) => (
+                              <div class={unit.classes}>{unit.text}</div>
+                            ))}
+                          </div>
+                        </div>
+                      ))}
+                      <div class="text-m font-semibold">{row.text}</div>
+                    </div>
+                  </div>
+                  <div data-anim="Loading.Text">
+                    <div class="body-text font-weight-medium">{row.text2}</div>
+                  </div>
+                </div>
+              ))}
+              <div class="expart-card">
+                <div class="expart-number-block">
+                  <div class="counter-number-col-wrap">
+                    <div class="text-m font-semibold">$</div>
+                    {homeTrackingCounterNumberColItems.map((item) => (
+                      <div class="counter-number-col">
+                        <div class={item.classes}>
+                          {item.textMList.map((row) => (
+                            <div class={row.classes}>{row.text}</div>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                    {homeTrackingTextMItems.map((cell) => (
+                      <div class="text-m font-semibold">{cell}</div>
+                    ))}
+                  </div>
+                </div>
+                <div data-anim="Loading.Text">
+                  <div class="body-text font-weight-medium">Cargo value optimized annually</div>
+                </div>
+              </div>
+              <div class="expart-card">
+                <div class="expart-number-block">
+                  <div class="counter-number-col-wrap">
+                    {homeTrackingCounterNumberColItems2.map((unit) => (
+                      <div class="counter-number-col">
+                        <div class={unit.classes}>
+                          {unit.textMList.map((item) => (
+                            <div class="text-m">{item}</div>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                    <div class="text-m">%</div>
+                  </div>
+                </div>
+                <div data-anim="Loading.Text">
+                  <div class="body-text font-weight-medium">On-time delivery rate</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

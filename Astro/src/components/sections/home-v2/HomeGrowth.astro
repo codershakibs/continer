@@ -1,0 +1,100 @@
+---
+import Img from '@/components/ui/Img.astro';
+import SecondaryButton from '@/components/ui/SecondaryButton.astro';
+import SectionSubHeading from '@/components/ui/SectionSubHeading.astro';
+import { homeGrowthGrowthFillItems, homeGrowthGrowthTagItems, homeGrowthGrowthImageLeftItems } from '@/data/sections/home-v2';
+---
+<section class="section padding-top-x-bottm-m">
+  <div class="container c-container">
+    <div>
+      <div class="growth-top-section">
+        <SectionSubHeading tag="NEXT-GEN FREIGHT INTELLIGENCE" title="Transforming supply chain velocity into measurable market growth" />
+      </div>
+      <div class="growth-section-grid">
+        <div class="growth-left">
+          <div class="growth-card _01" data-anim="items">
+            <div class="growth-card-inner">
+              <div class="growht-top">
+                <div class="growth-fil-wrap">
+                  {homeGrowthGrowthFillItems.map((item) => (
+                    <Img src={item} alt="Team member portrait" class="growth-fill" loading="eager" />
+                  ))}
+                </div>
+                <div class="text-regular dark-teal">Empowering global dispatch leaders to scale operations</div>
+              </div>
+              <div class="growht-bottom">
+                <div class="text-l night-color">5.2x</div>
+                <div class="body-text capital-medium">speed</div>
+              </div>
+            </div>
+            <div class="growth-card-image-block">
+              <Img src="/images/Growth-1-2.webp" alt="Logistics growth overview" class="growth-card-image" widths={[500, 800, 1080, 1344]} sizes="100vw" />
+              <div class="growth-absolute">
+                <div class="growth-author-wrap">
+                  <div class="growth-author-block">
+                    <div class="growth-author-image-blcok">
+                      <Img src="/images/Growth-1-1.webp" alt="Logistics growth overview" class="growth-author-image" loading="eager" />
+                    </div>
+                    <div class="growth-author-info">
+                      <div class="body-text dark-color">Automated custom clearance</div>
+                      <div class="text-small red-capital">VANGUARD FREIGHT</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="growth-card _02" data-anim="Card.Animation">
+            <div class="growth-card-heading-block">
+              <div>
+                <div class="text-s body-color">Live tracking console or monitoring hub</div>
+              </div>
+              <div class="growth-logo-block">
+                <Img src="/images/Growth.svg" alt="Logistics growth overview" />
+              </div>
+            </div>
+            <div class="growth-card-bottom">
+              <div class="growth-tag-wrap">
+                {homeGrowthGrowthTagItems.map((row) => (
+                  <div class={row.classes}>
+                    <div>{row.text}</div>
+                  </div>
+                ))}
+              </div>
+              <div>
+                <SecondaryButton href="/about-v1" variant="white">Read alll story</SecondaryButton>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="growth-right" data-anim="Card.Animation">
+          <div class="growth-image-block">
+            <Img src="/images/Growth.webp" alt="Logistics growth overview" class="growth-image" loading="eager" widths={[500, 800, 1080, 1344]} sizes="(max-width: 767px) 100vw, (max-width: 991px) 728px, 940px" />
+            <div class="growth-img-absolute">
+              <div class="growth-image-content">
+                <div class="growth-image-content-inner">
+                  <div>
+                    <div class="text-s white">Eliminating transport friction across international shipping lanes</div>
+                  </div>
+                  <div class="growth-image-flex">
+                    {homeGrowthGrowthImageLeftItems.map((cell) => (
+                      <div class="growth-image-left">
+                        <div>
+                          <div class="text-n">{cell}</div>
+                        </div>
+                        <div class="growth-image-text">
+                          <div class="body-text white-medium">Reduction in idle transit time</div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  <div class="growth-fil"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

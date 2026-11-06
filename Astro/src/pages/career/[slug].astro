@@ -1,0 +1,91 @@
+---
+import type { GetStaticPaths } from 'astro';
+import type { CollectionEntry } from 'astro:content';
+import Base from '@/layouts/Base.astro';
+import SectionTag from '@/components/ui/SectionTag.astro';
+import Cta from '@/components/sections/shared/Cta.astro';
+import TagIcon from '@/assets/icons/career-tag-icon.svg';
+import { getCareers, renderParts } from '@/lib/content';
+
+export const getStaticPaths = (async () =>
+  (await getCareers()).map((career) => ({ params: { slug: career.id }, props: { career } }))) satisfies GetStaticPaths;
+
+const { career } = Astro.props as { career: CollectionEntry<'careers'> };
+const { data } = career;
+const parts = renderParts(career);
+const details = data.detailTitles.map((title, index) => ({ title, html: parts[index] ?? '' }));
+---
+
+<Base title={`${data.title} - Continer`} description={data.metaDescription}>
+  <section class="section">
+    <div class="container c-container">
+      <div class="career-single-content-wrapper">
+        <div class="career-single-top-section">
+          <div class="career-left">
+            <div class="section-heading left">
+              <SectionTag data-anim="Privacy.Tag">{data.tag}</SectionTag>
+              <div class="section-title-block">
+                <h1 data-anim="Privacy.Title" class="section-title">{data.title}</h1>
+              </div>
+            </div>
+          </div>
+          <div class="career-right">
+            <p data-anim="Privacy.Text" class="text-regular slate-gray">{data.intro}</p>
+          </div>
+        </div>
+        <div class="career-section-flex">
+          <div class="career-left-side">
+            <div class="career-details-wrap">
+              <div class="career-details-block">
+                <div class="career-details-flex">
+                  <div data-anim="Privacy.Text-2" class="career-tag-flex">
+                    <div class="career-tag"><TagIcon class="red-right-aro" /></div>
+                    <div role="heading" aria-level="2" class="text-large dark-color">{data.summaryTitle}</div>
+                  </div>
+                  <p data-anim="Privacy.Text-3" class="text-regular">{data.summary}</p>
+                </div>
+              </div>
+              {details.map((detail, index) => (
+                <div class="career-details-block" data-anim={index > 0 ? 'items' : undefined}>
+                  <div class="career-tag-flex" data-anim={index === 0 ? 'Privacy.Text-4' : undefined}>
+                    <div class="career-tag"><TagIcon class="red-right-aro" /></div>
+                    <div role="heading" aria-level="2" class="text-large dark-color">{detail.title}</div>
+                  </div>
+                  <div class="career-details c-richtext" data-anim={index === 0 ? 'Card.Animation' : undefined} set:html={detail.html} />
+                </div>
+              ))}
+            </div>
+          </div>
+          <div class="career-right-side">
+            <div class="career-info-wrap">
+              <div class="career-info-item">
+                <div class="career-card-title">
+                  <div class="text-xs dark">Essential information</div>
+                </div>
+                <div data-anim="items" class="career-info-card-flex">
+                  <div class="career-info-card">
+                    <div class="text-regular font-gesist-mono">Type of Offer:</div>
+                    <div class="text-medium woodsmoke">{data.jobType}</div>
+                  </div>
+                  <div class="career-info-card">
+                    <div class="text-regular font-gesist-mono">Work Schedule:</div>
+                    <div class="text-medium woodsmoke">{data.schedule}</div>
+                  </div>
+                  <div class="career-info-card">
+                    <div class="text-regular font-gesist-mono">Key Benefit:</div>
+                    <div class="text-medium woodsmoke">{data.benefit}</div>
+                  </div>
+                  <div class="career-info-card">
+                    <div class="text-regular font-gesist-mono">Candidacy:</div>
+                    <a href={`mailto:${data.email}?subject=${encodeURIComponent(data.title)}`} class="text-medium hover">{data.email}</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <Cta />
+</Base>

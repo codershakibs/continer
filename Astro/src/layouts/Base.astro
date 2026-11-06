@@ -1,0 +1,61 @@
+---
+import '@fontsource-variable/geist';
+import '@fontsource-variable/geist-mono';
+import '@/styles/tokens.css';
+import '@/styles/base.css';
+import '@/styles/components.css';
+import '@/styles/responsive.css';
+import '@/styles/interactions.css';
+import SeoMeta from '@/components/layout/SeoMeta.astro';
+import Header from '@/components/layout/Header.astro';
+import Footer from '@/components/layout/Footer.astro';
+import config from '@/config/config.json';
+
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+  type?: 'website' | 'article';
+  noindex?: boolean;
+  publishedTime?: string;
+  schema?: Record<string, unknown>[];
+  header?: 'base' | 'absolute' | 'home-version';
+  /** Wraps the header in a dark band, used by pages that open with a dark hero. */
+  darkHeader?: boolean;
+}
+
+const { header = 'base', darkHeader = false, ...seo } = Astro.props;
+const formEndpoint = import.meta.env.PUBLIC_FORM_ENDPOINT ?? '';
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <script is:inline>
+      (function (root) {
+        root.classList.add('has-js');
+        if ('ontouchstart' in window) root.classList.add('has-touch');
+        if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          root.classList.add('has-motion');
+          // Never leave content hidden if the animation bundle fails to load.
+          setTimeout(function () { root.classList.add('anim-ready'); }, 3000);
+        }
+      })(document.documentElement);
+    </script>
+    <SeoMeta {...seo} />
+  </head>
+  <body class="body" data-form-endpoint={formEndpoint} data-form-demo={config.forms.demoMode ? 'true' : 'false'}>
+    <div class="page-wrapper">
+      {darkHeader ? <div class="header"><Header variant={header} /></div> : <Header variant={header} />}
+      <main class="main">
+        <slot />
+        <Footer />
+      </main>
+    </div>
+    <script>
+      import '@/scripts/main';
+    </script>
+  </body>
+</html>

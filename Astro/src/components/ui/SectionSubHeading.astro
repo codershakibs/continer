@@ -1,0 +1,37 @@
+---
+import SectionTag from './SectionTag.astro';
+
+interface Props {
+  tag: string;
+  title?: string;
+  /** Use instead of `title` when the heading contains inline markup such as `<br>`. */
+  'title-html'?: string;
+  variant?: 'base' | 'left' | 'white' | 'white-left';
+  as?: 'h1' | 'h2' | 'h3' | 'h4' | 'div';
+  'tag-class'?: string;
+  'title-class'?: string;
+  'title-anim'?: string;
+  class?: string;
+  [key: `data-${string}`]: unknown;
+}
+
+const {
+  tag,
+  title,
+  'title-html': titleHtml,
+  variant = 'base',
+  as: Heading = 'h2',
+  'tag-class': tagClass = 'body-text capital-medium',
+  'title-class': titleClass = 'heading',
+  'title-anim': titleAnim = 'Sub.Title',
+  class: className,
+  ...rest
+} = Astro.props;
+const variantClass = variant !== 'base' ? `v-subheading-${variant}` : undefined;
+---
+<div class:list={['section-sub-heading', variantClass, className]} {...rest}>
+  <SectionTag data-anim="Sub.Tag" label-class={tagClass}>{tag}</SectionTag>
+  <div class="section-sub-title-block">
+    {titleHtml ? <Heading data-anim={titleAnim} class={titleClass} set:html={titleHtml} /> : <Heading data-anim={titleAnim} class={titleClass}>{title}</Heading>}
+  </div>
+</div>

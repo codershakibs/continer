@@ -1,0 +1,36 @@
+---
+import Img from '@/components/ui/Img.astro';
+import SectionSubHeading from '@/components/ui/SectionSubHeading.astro';
+import { homeFreightFreightCardItems } from '@/data/sections/home-v2';
+---
+<section class="section padding-top-x-bottm-m">
+  <div class="container c-container">
+    <div>
+      <div class="freight-top-section">
+        <SectionSubHeading variant="left" tag="OUR EXPERTISE" title="Simplify complexity and move with cargo clarity" />
+      </div>
+      <div>
+        <div class="freight-grid" data-anim="items">
+          {homeFreightFreightCardItems.map((item) => (
+            <div class="freight-card">
+              <div class="freight-item">
+                <div class="freight-card-top">
+                  <div>
+                    <Img src={item.image} alt="Freight operations" class="freight-card-image" loading="eager" widths={item.widths} sizes="100vw" />
+                  </div>
+                  <div class="freight-card-svg">
+                    <item.icon class="freight-card-logo" />
+                  </div>
+                </div>
+                <div class="freight-card-bottom">
+                  <div class="text-extra-large dark">{item.text}</div>
+                  <div class="text-regular">{item.text2}</div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

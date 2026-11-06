@@ -1,0 +1,49 @@
+---
+import SectionTag from '@/components/ui/SectionTag.astro';
+import { policyMainPrivacyPolicyCardItems, policyMainTextRegularItems } from '@/data/sections/policy';
+---
+<section class="section">
+  <div class="container c-container">
+    <div>
+      <div class="privacy-policy-top-section">
+        <div class="section-heading">
+          <SectionTag data-anim="Privacy.Tag" label-class="body-text capital-medium">Policy</SectionTag>
+          <div class="section-title-block">
+            <h1 class="section-title" data-anim="Privacy.Title">Privacy Policy</h1>
+          </div>
+          <div class="section-text-wrap">
+            <p class="text-regular raisin-black" data-anim="Privacy.Text">We step inside fast-moving teams to remove execution debt and align modern data funnels. No guesswork.</p>
+          </div>
+        </div>
+      </div>
+      <div class="privacy-policy-content-wrap">
+        <div class="privacy-policy-flex">
+          {policyMainPrivacyPolicyCardItems.map((item) => (
+            <div class="privacy-policy-card" data-anim="items">
+              <div class="text-s">{item.text}</div>
+              <div class="privacy-policy-summary">
+                {item.textRegularList.map((row) => (
+                  <p class="text-regular">{row}</p>
+                ))}
+              </div>
+            </div>
+          ))}
+          <div class="privacy-policy-card" data-anim="items">
+            <div class="text-s">How Your Data is Stored &amp; Protected</div>
+            <div class="privacy-policy-summary">
+              <p class="text-regular">All data layers are encrypted both in transit and at rest using modern, industry-standard cryptographic protocols. System access configurations are heavily restricted to authorized internal operations teams through secure role-based access controls and monitored logs. Redundant database backups are securely managed within highly isolated, geographically separated hosting environments. Your primary layout parameters and core content structures are fully protected from public exposure and remain safely contained within our hardened ecosystem infrastructure.</p>
+            </div>
+          </div>
+          <div class="privacy-policy-card" data-anim="items">
+            <div class="text-s">Your Rights &amp; How to Manage Your Data</div>
+            <div class="privacy-policy-summary">
+              {policyMainTextRegularItems.map((cell) => (
+                <p class="text-regular">{cell}</p>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

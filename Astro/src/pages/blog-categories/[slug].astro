@@ -1,0 +1,20 @@
+---
+import type { GetStaticPaths } from 'astro';
+import type { CollectionEntry } from 'astro:content';
+import Base from '@/layouts/Base.astro';
+import BlogHero from '@/components/sections/blog/BlogHero.astro';
+import BlogListing from '@/components/sections/blog/BlogListing.astro';
+import Cta from '@/components/sections/shared/Cta.astro';
+import { getCategories } from '@/lib/content';
+
+export const getStaticPaths = (async () =>
+  (await getCategories()).map((category) => ({ params: { slug: category.id }, props: { category } }))) satisfies GetStaticPaths;
+
+const { category } = Astro.props as { category: CollectionEntry<'blog-categories'> };
+---
+
+<Base title={`${category.data.name} - Continer Logistics Astro Theme`} description={category.data.metaDescription}>
+  <BlogHero class="" cellClass="cell-d97bb0ed9f4f9a354974" />
+  <BlogListing activeCategory={category.id} />
+  <Cta />
+</Base>

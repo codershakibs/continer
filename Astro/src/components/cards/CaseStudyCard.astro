@@ -1,0 +1,40 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { Image } from 'astro:assets';
+import DarkButton from '@/components/ui/DarkButton.astro';
+
+interface Props {
+  caseStudy: CollectionEntry<'case-studies'>;
+  anim?: string;
+}
+
+const { caseStudy, anim } = Astro.props;
+const href = `/case-study/${caseStudy.id}`;
+---
+<div class="case-study-card" data-anim={anim}>
+  <div class="case-study-item">
+    <a href={href} class="case-image-block c-inline-block" aria-label={caseStudy.data.title}>
+      <Image src={caseStudy.data.image} alt={caseStudy.data.title} widths={[500, 800, 1200]} sizes="(max-width: 767px) 100vw, 50vw" class="case-image" />
+    </a>
+    <div class="case-card-content">
+      <div class="case-card-flex">
+        <div class="case-card-top">
+          <div class="case-icon-block">
+            <Image src={caseStudy.data.logo} alt="" class="case-svg" />
+          </div>
+          <div class="case-title-block">
+            <div class="text-s">{caseStudy.data.title}</div>
+          </div>
+        </div>
+      </div>
+      <div class="case-card-bottom">
+        <div class="case-short-text-block">
+          <div class="text-small gesist-mono-dard-medium">{caseStudy.data.readTime}</div>
+        </div>
+        <div class="case-button-block">
+          <DarkButton href={href} aria-label={`Read full story: ${caseStudy.data.title}`}>Read full story</DarkButton>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

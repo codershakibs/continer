@@ -1,0 +1,27 @@
+---
+import Base from '@/layouts/Base.astro';
+import HomeHero from '@/components/sections/home-v2/HomeHero.astro';
+import HomeCargo from '@/components/sections/home-v2/HomeCargo.astro';
+import HomeFreight from '@/components/sections/home-v2/HomeFreight.astro';
+import HomeTracking from '@/components/sections/home-v2/HomeTracking.astro';
+import HomeCareers from '@/components/sections/home-v2/HomeCareers.astro';
+import HomeTestimonials from '@/components/sections/home-v2/HomeTestimonials.astro';
+import HomeGrowth from '@/components/sections/home-v2/HomeGrowth.astro';
+import Faq from '@/components/sections/shared/Faq.astro';
+import HomeBlog from '@/components/sections/home-v2/HomeBlog.astro';
+import Cta from '@/components/sections/shared/Cta.astro';
+---
+
+<Base title="Home V2 - Continer Logistics Astro Theme" description="Build smarter logistics with Continer, a digital infrastructure platform designed to connect global supply chains and operations." header="home-version" darkHeader>
+  <HomeHero />
+  <HomeCargo />
+  <HomeFreight />
+  <HomeTracking />
+  <HomeCareers />
+  <div class="section-fil white-fil"></div>
+  <HomeTestimonials />
+  <HomeGrowth />
+  <Faq variant="home-v2" />
+  <HomeBlog />
+  <Cta />
+</Base>

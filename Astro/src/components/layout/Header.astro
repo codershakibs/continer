@@ -1,0 +1,112 @@
+---
+import NavLink from '@/components/ui/NavLink.astro';
+import PrimaryButton from '@/components/ui/PrimaryButton.astro';
+import GlobeIcon from '@/assets/icons/link-globe-icon.svg';
+import config from '@/config/config.json';
+import menu from '@/config/menu.json';
+
+interface Props {
+  variant?: 'base' | 'absolute' | 'home-version';
+}
+
+const { variant = 'base' } = Astro.props;
+const v = variant !== 'base' ? `v-header-${variant}` : undefined;
+const year = new Date().getFullYear();
+---
+<div class:list={['header-section', v]}>
+  <div class:list={['navbar', v, 'c-nav']} role="banner" data-collapse="medium" data-anim="Nav.Bar">
+    <div class:list={['container', 'navber', v, 'c-container']}>
+      <div class:list={['navbar-content-flex', v]}>
+        <nav aria-label="Primary" class:list={['navbar-menu-wrap', v, 'c-nav-menu']}>
+          <div class="navbar-menu-flex">
+            {menu.main.map((item) =>
+              item.dropdown ? (
+                <div class="nav-dropdown c-dropdown" data-dropdown>
+                  <button type="button" class="nav-dropdown-toggle c-dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+                    <span class="dropdown-flex-wrap">
+                      <span class="text-regular night-color">{item.label}</span>
+                      <img src="/images/dropdown-icon.svg" loading="lazy" alt="" class="nav-dropdown-icon" />
+                    </span>
+                    <span class="footer-menu-fill"></span>
+                  </button>
+                  <nav aria-label="All pages" class="dropdown-menu-list c-dropdown-list">
+                    <div class:list={['drop-inner-box', v]}>
+                      <div class="drop-inner-box-top">
+                        {menu.columns.map((column, index) => (
+                          <Fragment>
+                            {index > 0 && <div class="navbar-fil"></div>}
+                            <div class="menu-colum">
+                              <div class="nav-menu-title">
+                                <div class="text-medium black">{column.title}</div>
+                              </div>
+                              <div class="menu-colum-flex">
+                                {column.links.map((link) => <NavLink {...link} />)}
+                              </div>
+                            </div>
+                          </Fragment>
+                        ))}
+                      </div>
+                      <div class="drop-inner-box-bottom">
+                        <div class="navbar-button-group">
+                          <a href="/" class="navbar-link-block c-inline-block">
+                            <GlobeIcon class="navbar-link-logo" />
+                            <div class="text-small charcoal-color-capital">{config.site.domainLabel}</div>
+                          </a>
+                          <div class="navbar-button-block">
+                            {menu.buttons.map((button) => (
+                              <PrimaryButton href={button.href} variant={button.variant as 'red-version'}>{button.label}</PrimaryButton>
+                            ))}
+                          </div>
+                        </div>
+                        <div class="section-fil"></div>
+                        <div class="footer-copyright-block">
+                          <div class="text-small eerie-black">© {config.site.name} {year}, All Rights Reserved</div>
+                          <div class="text-small charcoal-color">{config.footer.credit}</div>
+                        </div>
+                      </div>
+                    </div>
+                  </nav>
+                </div>
+              ) : (
+                <NavLink href={item.href ?? '/'} label={item.label} />
+              )
+            )}
+          </div>
+        </nav>
+        <div class:list={['navbar-logo-wrap', v]}>
+          <a href="/" class="navbar-logo-block c-nav-brand" aria-label={`${config.site.name} home`}>
+            <img src={config.site.logo} loading="eager" alt={config.site.name} class="navbar-logo" />
+          </a>
+        </div>
+        <div class="nav-right">
+          <div class="nab-button-group">
+            <PrimaryButton href={menu.cta.href}>{menu.cta.label}</PrimaryButton>
+          </div>
+          <button type="button" class="nav-menu-button c-nav-button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle navigation menu" data-mobile-toggle>
+            <span class:list={['humbager-menu-block', v]}>
+              <span class="nav-top"></span>
+              <span class="nav-bottom"></span>
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div id="mobile-menu" class:list={['navbar-menu', v]} data-mobile-menu>
+      <div class:list={['drop-inner-box', v]}>
+        {menu.columns.map((column, index) => (
+          <Fragment>
+            {index > 0 && <div class="navbar-fil"></div>}
+            <div class="menu-colum">
+              <div class="nav-menu-title">
+                <div class="text-medium black">{column.title}</div>
+              </div>
+              <div class="menu-colum-flex">
+                {column.links.map((link) => <NavLink {...link} />)}
+              </div>
+            </div>
+          </Fragment>
+        ))}
+      </div>
+    </div>
+  </div>
+</div>

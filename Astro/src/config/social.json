@@ -1,0 +1,6 @@
+[
+  { "name": "Facebook", "icon": "facebook", "href": "https://www.facebook.com/" },
+  { "name": "X", "icon": "x", "href": "https://x.com/" },
+  { "name": "LinkedIn", "icon": "linkedin", "href": "https://www.linkedin.com/" },
+  { "name": "Threads", "icon": "threads", "href": "https://www.threads.com/" }
+]

@@ -1,0 +1,47 @@
+---
+import BlogCard from '@/components/cards/BlogCard.astro';
+import { getCategories, getStandardPosts } from '@/lib/content';
+
+interface Props {
+  /** Category slug to open by default, used by category archive pages. */
+  activeCategory?: string;
+}
+
+const { activeCategory } = Astro.props;
+const posts = await getStandardPosts();
+const order = ['strategy', 'operations', 'leadership'];
+const categories = (await getCategories()).sort((a, b) => order.indexOf(a.id) - order.indexOf(b.id));
+const tabs = [
+  { id: 'all', label: 'All articles', posts },
+  ...categories.map((category) => ({ id: category.id, label: category.data.name, posts: posts.filter((post) => post.data.category.id === category.id) })),
+];
+const current = activeCategory ?? 'all';
+---
+<section class="section padding-top-xs-bottom-x">
+  <div class="container c-container">
+    <div class="blog-conteent-wrapper">
+      <div class="blog-tabs c-tabs" data-tabs>
+        <div data-anim="items" class="blog-tab-menu c-tab-menu" role="tablist" aria-label="Filter articles by category">
+          {tabs.map((tab) => (
+            <a id={`tab-${tab.id}`} href={`#panel-${tab.id}`} role="tab" aria-controls={`panel-${tab.id}`} aria-selected={tab.id === current ? 'true' : 'false'} data-tab={tab.id} class:list={['blog-link', 'c-inline-block', 'c-tab-link', { 'is-current': tab.id === current }]}>
+              <div class="blog-link-text">{tab.label}</div>
+            </a>
+          ))}
+        </div>
+        <div class="blog-tab-content c-tab-content" data-anim="Card.Animation">
+          {tabs.map((tab) => (
+            <div id={`panel-${tab.id}`} role="tabpanel" aria-labelledby={`tab-${tab.id}`} data-tab-panel={tab.id} class:list={['blog-tab-content-block', 'c-tab-pane', { 'is-active': tab.id === current }]}>
+              <div class="blog-tab-content-wrap">
+                <div role="list" class="blog-grid-col-2">
+                  {tab.posts.map((post) => (
+                    <div role="listitem" class="blog-items"><BlogCard post={post} /></div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

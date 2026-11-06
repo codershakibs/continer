@@ -1,0 +1,24 @@
+---
+import CaseStudyCard from '@/components/cards/CaseStudyCard.astro';
+import { getCaseStudies } from '@/lib/content';
+
+const caseStudies = await getCaseStudies();
+---
+<section class="section padding-top-m-bottom-x">
+  <div class="container c-container">
+    <div>
+      <div class="case-study-content-wrap">
+        <div>
+          <div role="list" class="case-study-section-grid">
+            {caseStudies.slice(0, 2).map((entry) => (<div role="listitem"><CaseStudyCard caseStudy={entry} anim="Contact.Toggle0" /></div>))}
+          </div>
+        </div>
+        <div>
+          <div role="list" class="case-study-section-grid">
+            {caseStudies.slice(2, 4).map((entry) => (<div role="listitem"><CaseStudyCard caseStudy={entry} anim="Card.Animation" /></div>))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

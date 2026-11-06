@@ -1,0 +1,266 @@
+/* Interaction states that replace the original hover and class-based timelines. */
+
+/* Hold animated content until the entrance timelines have set their start state. */
+html.has-motion:not(.anim-ready) [data-anim] {
+  visibility: hidden;
+}
+
+/* Elements that are now real buttons keep the look of the original markup. */
+button.nav-dropdown-toggle,
+button.nav-menu-button {
+  appearance: none;
+  background: none;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+:where(.humbager-menu-block),
+.nav-top,
+.nav-bottom {
+  display: block;
+}
+
+:where(.footer-menu-fill) {
+  display: block;
+}
+
+/* Underlined navigation links */
+.button-link .footer-menu-fill,
+.nav-dropdown .footer-menu-fill {
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  transition: transform 0.4s ease;
+}
+
+.button-link:hover .footer-menu-fill,
+.button-link:focus-visible .footer-menu-fill,
+.nav-dropdown:hover .footer-menu-fill,
+.nav-dropdown.is-open .footer-menu-fill {
+  transform: scaleX(1);
+}
+
+.nav-dropdown-icon {
+  transition: transform 0.4s ease;
+}
+
+.nav-dropdown.is-open .nav-dropdown-icon {
+  transform: rotate(-180deg);
+}
+
+/* Mobile navigation */
+.nav-top,
+.nav-bottom {
+  transition: transform 0.4s ease;
+}
+
+.nav-menu-button.is-active .nav-top {
+  transform: translateY(4px) rotate(45deg);
+}
+
+.nav-menu-button.is-active .nav-bottom {
+  transform: translateY(-3px) rotate(-45deg);
+}
+
+@media screen and (max-width: 991px) {
+  .navbar-menu {
+    transform: translateY(-125%);
+    visibility: hidden;
+    transition: transform 0.45s ease, visibility 0.45s;
+  }
+
+  .navbar-menu.is-open {
+    transform: translateY(10px);
+    visibility: visible;
+  }
+}
+
+/* Text link with underline and arrow */
+.button-line {
+  transition: transform 0.35s ease;
+}
+
+.dard-aro-icon {
+  transition: transform 0.35s ease;
+}
+
+.link-block:hover .button-line {
+  transform: scaleX(0);
+}
+
+.link-block:hover .dard-aro-icon {
+  transform: translateX(12px);
+}
+
+/* Dark button icon swap */
+.show-icon,
+.hide-icon {
+  transition: transform 0.3s ease;
+}
+
+.button:hover .show-icon {
+  transform: translate(24px, -24px);
+}
+
+.button:hover .hide-icon {
+  transform: translate(0, -24px);
+}
+
+/* Image zoom on hover */
+.blog-main-image,
+.tam-image,
+.case-image,
+.blog-active-image,
+.team-image,
+.about-image,
+.case-details-image,
+.case-single-image,
+.insights-image,
+.chain-image,
+.service-card-image,
+.capabilites-image,
+.blog-single-image,
+.blog-details-image,
+.service-single-details-image,
+.continer-image,
+.about-marque-image,
+.blog-image,
+.licenses-image {
+  transition: transform 1s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.team-card .tam-image {
+  transform: scale(1.03);
+}
+
+.team-card:hover .tam-image,
+.case-image-block:hover .case-image,
+.blog-active-image-block:hover .blog-active-image,
+.team-cards-image-block:hover .team-image,
+.about-image-block:hover .about-image,
+.case-details-image-block:hover .case-details-image,
+.case-single-image-block:hover .case-single-image,
+.insights-link:hover .insights-image,
+.chain-image-block:hover .chain-image,
+.service-card-image-block:hover .service-card-image,
+.capabilites-image-block:hover .capabilites-image,
+.blog-single-image-block:hover .blog-single-image,
+.blog-details-image-block:hover .blog-details-image,
+.service-single-details-image-block:hover .service-single-details-image,
+.continer-card-bottom:hover .continer-image,
+.about-marque-image-block:hover .about-marque-image,
+.blog-image-block:hover .blog-image,
+.licenses-image-block:hover .licenses-image {
+  transform: scale(1.1);
+}
+
+/* Career rows */
+.career-card .text-extra-large,
+.career-card .body-text,
+.career-card .right-white-aro {
+  transition: color 0.35s ease, transform 0.35s ease;
+}
+
+.career-card:hover .text-extra-large,
+.career-card:hover .body-text,
+.career-card:hover .right-white-aro {
+  color: var(--coral-red-color);
+}
+
+.career-card:hover .right-white-aro {
+  transform: translateX(6px);
+}
+
+/* Service links with a sliding arrow */
+.cargo-block {
+  overflow: hidden;
+}
+
+.cargo-content-flex {
+  transform: translateX(-36px);
+  transition: transform 0.45s ease;
+}
+
+.cargo-block .text-m.white-rgb {
+  transition: color 0.45s ease;
+}
+
+.cargo-block:hover .cargo-content-flex,
+.cargo-block:focus-visible .cargo-content-flex {
+  transform: translateX(0);
+}
+
+.cargo-block:hover .text-m.white-rgb,
+.cargo-block:focus-visible .text-m.white-rgb {
+  color: var(--night-color);
+}
+
+/* FAQ accordion */
+.faq-item-top {
+  cursor: pointer;
+}
+
+.faq-item-bottom {
+  height: 0;
+}
+
+.faq-item.active .faq-item-bottom {
+  height: auto;
+}
+
+/* Workflow tabs on Home A */
+.cargo-tab-content-block:not(.first) {
+  visibility: hidden;
+  opacity: 0;
+}
+
+/* Logo marquees */
+@keyframes marquee-left {
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes marquee-right {
+  to {
+    transform: translateX(100%);
+  }
+}
+
+.brand-logo-marquee {
+  animation: marquee-left 30s linear infinite;
+}
+
+.brand-logo-marquee-right {
+  animation: marquee-right 30s linear infinite;
+}
+
+.precision-logo-flex {
+  animation: marquee-left 24s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brand-logo-marquee,
+  .brand-logo-marquee-right,
+  .precision-logo-flex {
+    animation: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Keyboard focus */
+a:focus-visible,
+button:focus-visible,
+[role='tab']:focus-visible,
+.faq-item-top:focus-visible,
+.c-slider-arrow-left:focus-visible,
+.c-slider-arrow-right:focus-visible {
+  outline: 2px solid var(--coral-red-color);
+  outline-offset: 3px;
+}

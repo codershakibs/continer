@@ -1,0 +1,59 @@
+---
+import SectionSubHeading from '@/components/ui/SectionSubHeading.astro';
+import CareerRow from '@/components/cards/CareerRow.astro';
+import { getCareers } from '@/lib/content';
+
+const careers = await getCareers();
+---
+<section class="section night-color">
+  <div class="container c-container">
+    <div class="career-content-wraaper">
+      <div class="careeer-heading-block career">
+        <SectionSubHeading variant="white" tag-class="body-text capital-medium v-subheading-white" tag="EXPLORE OPPORTUNITIES" title-class="heading v-subheading-white" title="Join our global logistics network" />
+      </div>
+      <div class="career-content-flex" data-anim="items">
+        <div>
+          <div role="list">
+            <div role="listitem"><CareerRow career={careers[0]} /></div>
+          </div>
+        </div>
+        <div class="career-fil"></div>
+        <div>
+          <div role="list">
+            <div role="listitem"><CareerRow career={careers[1]} /></div>
+          </div>
+        </div>
+        <div class="career-fil"></div>
+        <div>
+          <div role="list">
+            <div role="listitem"><CareerRow career={careers[2]} /></div>
+          </div>
+        </div>
+        <div class="career-fil"></div>
+        <div>
+          <div role="list">
+            <div role="listitem"><CareerRow career={careers[3]} /></div>
+          </div>
+        </div>
+        <div class="career-fil"></div>
+        <div>
+          <div role="list">
+            <div role="listitem"><CareerRow career={careers[4]} /></div>
+          </div>
+        </div>
+        <div class="career-fil"></div>
+        <div>
+          <div role="list">
+            <div role="listitem"><CareerRow career={careers[5]} /></div>
+          </div>
+        </div>
+        <div class="career-fil"></div>
+        <div>
+          <div role="list">
+            <div role="listitem"><CareerRow career={careers[6]} /></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

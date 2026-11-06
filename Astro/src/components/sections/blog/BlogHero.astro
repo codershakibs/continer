@@ -1,0 +1,38 @@
+---
+import SectionTag from '@/components/ui/SectionTag.astro';
+import BlogFeatureCard from '@/components/cards/BlogFeatureCard.astro';
+import { getFeaturedPost } from '@/lib/content';
+
+interface Props {
+  /** The category archive sits closer to the following section than the blog index. */
+  class?: string;
+  cellClass?: string;
+}
+
+const { class: className = 'padding-l', cellClass } = Astro.props;
+const featured = await getFeaturedPost();
+---
+<section class:list={['section', className]}>
+  <div class="container c-container">
+    <div class="blog-conteent-wrapper">
+      <div class="blog-top-section">
+        <div class="about-left">
+          <div class="section-heading left">
+            <SectionTag data-anim="About.Tag">PERSPECTIVES &amp; INSIGHTS</SectionTag>
+            <div class="section-title-block">
+              <h1 data-anim="About.Title" class="section-title">Perspectives, trends, and practical</h1>
+            </div>
+          </div>
+        </div>
+        <div class="blog-right">
+          <div class="about-summary">
+            <p data-anim="About.Text" class="text-regular slate-gray">Expert insights on freight telemetry, fleet automation, and modern logistics infrastructure for global enterprises.</p>
+          </div>
+        </div>
+      </div>
+      <div class="blog-content-wrap">
+        {featured && <div role="list" class="blog-active-card"><div role="listitem"><BlogFeatureCard post={featured} anim="About.Button" cellClass={cellClass} /></div></div>}
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,88 @@
+---
+import DarkButton from '@/components/ui/DarkButton.astro';
+import Img from '@/components/ui/Img.astro';
+import SectionSubHeading from '@/components/ui/SectionSubHeading.astro';
+import { homeTestimonialsCounterNumberColItems, homeTestimonialsTestimonialFilItems } from '@/data/sections/home';
+---
+<section class="section night-color">
+  <div class="container c-container">
+    <div class="testimonial-content-wrapper">
+      <div class="testimonial-top-section">
+        <SectionSubHeading variant="white" tag-class="body-text capital-medium v-subheading-white" tag="CLIENT TESTIMONIAL" title-class="heading v-subheading-white" title="Built for Teams That Move Fast" />
+        <div>
+          <p class="text-regular isabelline-color" data-anim="Loading.Text">Scale routes, optimize dispatch, and turn complexity into measurable results.</p>
+        </div>
+      </div>
+      <div class="testimonial-section-grid" data-anim="items">
+        <div class="testimonial-card _01">
+          <div class="testimonial-card-item">
+            <div class="testimonial-center">
+              <div class="testimonial-inner">
+                <div>
+                  <div class="text-regular eriblack-medium">Success rate</div>
+                </div>
+                <div>
+                  <div class="testimonial-svg-block">
+                    <Img src="/images/Testimonial-Svg.png" alt="Logistics customer portrait" />
+                    <div class="testimonial-svg-absolute">
+                      <div class="testimonial-number-block">
+                        <div class="counter-number-col-wrap">
+                          {homeTestimonialsCounterNumberColItems.map((item) => (
+                            <div class="counter-number-col">
+                              <div class={item.classes}>
+                                {item.textMList.map((row) => (
+                                  <div class="text-m">{row}</div>
+                                ))}
+                              </div>
+                            </div>
+                          ))}
+                          <div class="text-m">%</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <DarkButton href="/about-v1" icon="/images/Red-Svg.svg">Success Story</DarkButton>
+                </div>
+              </div>
+            </div>
+            {homeTestimonialsTestimonialFilItems.map((cell) => (
+              <div class={cell}></div>
+            ))}
+          </div>
+        </div>
+        <div class="testimonial-card _02">
+          <div class="testimonial-image-block">
+            <Img src="/images/Testimonial.webp" alt="Logistics customer portrait" class="testimonial-image" loading="eager" widths={[500, 800, 864]} sizes="100vw" />
+            <div class="overlay-grid">
+              {Array.from({ length: 8 }).map(() => (
+                <div class="col"></div>
+              ))}
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card _03">
+          <div class="testimonial-card-flex">
+            <div>
+              <div class="text-extra-large">“What mattered most was their ability to simplify complexity and bring clarity to difficult decisions.”</div>
+            </div>
+            <div class="testimonial-card-bottom">
+              <div class="testimonial-author-block">
+                <Img src="/images/Testimonial-Author.webp" alt="Customer portrait" class="testimonial-author-image" />
+              </div>
+              <div class="testimonial-author-flex">
+                <div class="text-regular night-medium">Jasmine Holloway</div>
+                <div class="testimonial-author-inner">
+                  <div class="text-small gesist-mono">Nortext</div>
+                  <div class="testimonial-author-fil"></div>
+                  <div class="text-small gesist-mono">ceo</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

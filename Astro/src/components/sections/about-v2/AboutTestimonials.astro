@@ -1,0 +1,45 @@
+---
+import SectionSubHeading from '@/components/ui/SectionSubHeading.astro';
+import RightArowIcon from '@/assets/icons/right-arow-icon.svg';
+import ValueArowIcon from '@/assets/icons/value-arow-icon.svg';
+import { aboutTestimonialsValueSideItems } from '@/data/sections/about-v2';
+---
+<section class="section night-color">
+  <div class="container c-container">
+    <div class="testimonial-content-wrapper v1">
+      <div class="testimonial-top">
+        <SectionSubHeading variant="white-left" tag-class="body-text capital-medium v-subheading-white-left" tag="OUR CORE VALUES" title-class="heading v-subheading-white-left" title="Built on precision, transparency, and scale" />
+      </div>
+      <div data-anim="Card.Animation">
+        <div data-delay="4000" data-animation="slide" data-autoplay="false" data-duration="500" class="testimonial testimonial-margin c-slider">
+          <div class="value-mask c-slider-mask">
+            {aboutTestimonialsValueSideItems.map((item) => (
+              <div class="value-side c-slide">
+                <div class="value-card">
+                  <div class="value-card-item">
+                    <div>
+                      <div class="value-logo-block">
+                        <item.icon class="value-svg" />
+                      </div>
+                    </div>
+                    <div class="value-card-bottom">
+                      <div class="text-xs dark-600">{item.text}</div>
+                      <div class="text-regular">{item.text2}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div class="value-arow c-slider-arrow-left">
+            <ValueArowIcon />
+          </div>
+          <div class="value-right-aro c-slider-arrow-right">
+            <RightArowIcon />
+          </div>
+          <div class="side-nav c-slider-nav c-round c-num"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

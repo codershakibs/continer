@@ -1,0 +1,23 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+interface Props extends HTMLAttributes<'img'> {
+  src: string;
+  alt?: string;
+  /** Available pre-rendered widths. `/images/x.webp` resolves to `/images/x-p-500.webp`, the largest is `src` itself. */
+  widths?: readonly number[];
+}
+
+const { src, alt = '', widths, srcset, loading = 'lazy', ...rest } = Astro.props;
+
+let resolvedSrcset = srcset;
+if (widths?.length) {
+  const extension = src.slice(src.lastIndexOf('.'));
+  const stem = src.slice(0, -extension.length);
+  const largest = Math.max(...widths);
+  resolvedSrcset = widths
+    .map((width) => `${width === largest ? src : `${stem}-p-${width}${extension}`} ${width}w`)
+    .join(', ');
+}
+---
+<img src={src} srcset={resolvedSrcset} alt={alt} loading={loading} decoding="async" {...rest} />

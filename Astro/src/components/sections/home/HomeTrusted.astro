@@ -1,0 +1,121 @@
+---
+import SectionTag from '@/components/ui/SectionTag.astro';
+import { homeTrustedTrustedCardItems, homeTrustedCounterNumberColItems, homeTrustedTextLBlackItems, homeTrustedCounterNumberColItems2, homeTrustedTextLBlackItems2, homeTrustedBrandLogoMarqueeItems } from '@/data/sections/home';
+---
+<section class="section night-color padding-l">
+  <div class="container c-container">
+    <div>
+      <div class="trusted-section-flex">
+        <div class="trusted-right">
+          <div>
+            <div class="impact-sticky-box">
+              <div>
+                <SectionTag data-anim="Sub.Tag" label-class="body-text capital-medium white">TRUSTED IMPACT</SectionTag>
+              </div>
+              <div class="trusted-summary-block">
+                <h2 class="trusted-summary" data-anim="Loading.Text">Helping logistics operators move freight forward through clearer routing, stronger networks, and measurable performance</h2>
+              </div>
+            </div>
+            <div class="trusted-grid" data-anim="items">
+              {homeTrustedTrustedCardItems.map((item) => (
+                <div class="trusted-card">
+                  <div class="trusted-item">
+                    <div class="counter-number-block">
+                      <div class="counter-number-col-wrap">
+                        {item.counterNumberColList.map((row) => (
+                          <div class="counter-number-col">
+                            <div class={row.classes}>
+                              {row.textLBlackList.map((cell) => (
+                                <div class="text-l-black white">{cell}</div>
+                              ))}
+                            </div>
+                          </div>
+                        ))}
+                        <div class="text-l-black white">+</div>
+                      </div>
+                    </div>
+                    <div class="text-regular white">{item.text}</div>
+                  </div>
+                  <div class="home-card-absolute-1 _01"></div>
+                  <div class="home-card-absolute-2 _02"></div>
+                  <div class="home-card-absolute-3 _03"></div>
+                  <div class="home-card-absolute-4 _04"></div>
+                </div>
+              ))}
+              <div class="trusted-card">
+                <div class="trusted-item">
+                  <div class="counter-number-block">
+                    <div class="counter-number-col-wrap">
+                      <div class="text-l-black white">$</div>
+                      {homeTrustedCounterNumberColItems.map((unit) => (
+                        <div class="counter-number-col">
+                          <div class={unit.classes}>
+                            {unit.textLBlackList.map((item) => (
+                              <div class="text-l-black white">{item}</div>
+                            ))}
+                          </div>
+                        </div>
+                      ))}
+                      {homeTrustedTextLBlackItems.map((row) => (
+                        <div class="text-l-black white">{row}</div>
+                      ))}
+                    </div>
+                  </div>
+                  <div class="text-regular white">Cargo value optimized annually</div>
+                </div>
+                <div class="home-card-absolute-1 _01"></div>
+                <div class="home-card-absolute-2 _02"></div>
+                <div class="home-card-absolute-3 _03"></div>
+                <div class="home-card-absolute-4 _04"></div>
+              </div>
+              <div class="trusted-card">
+                <div class="trusted-item">
+                  <div class="counter-number-block">
+                    <div class="counter-number-col-wrap">
+                      {homeTrustedCounterNumberColItems2.map((cell) => (
+                        <div class="counter-number-col">
+                          <div class={cell.classes}>
+                            {cell.textLBlackList.map((unit) => (
+                              <div class="text-l-black white">{unit}</div>
+                            ))}
+                          </div>
+                        </div>
+                      ))}
+                      <div class="text-l-black white">.</div>
+                      <div class="counter-number-col">
+                        <div class="counter-number _01">
+                          {homeTrustedTextLBlackItems2.map((item) => (
+                            <div class="text-l-black white">{item}</div>
+                          ))}
+                        </div>
+                      </div>
+                      <div class="text-l-black white">%</div>
+                    </div>
+                  </div>
+                  <div class="text-regular white">On-time delivery rate</div>
+                </div>
+                <div class="home-card-absolute-1 _01"></div>
+                <div class="home-card-absolute-2 _02"></div>
+                <div class="home-card-absolute-3 _03"></div>
+                <div class="home-card-absolute-4 _04"></div>
+              </div>
+            </div>
+          </div>
+          <div class="trusted-logo">
+            <div class="brand-logo-marquee-block gap">
+              {homeTrustedBrandLogoMarqueeItems.map((row) => (
+                <div class="brand-logo-marquee gap">
+                  {row.trustedSvgList.map((cell) => (
+                    <cell.icon class="trusted-svg" />
+                  ))}
+                </div>
+              ))}
+            </div>
+            <div class="trusted-absolute-01"></div>
+            <div class="trusted-absolute-02"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,34 @@
+---
+import BackgroundVideo from '@/components/ui/BackgroundVideo.astro';
+import PrimaryButton from '@/components/ui/PrimaryButton.astro';
+import SecondaryButton from '@/components/ui/SecondaryButton.astro';
+import SectionTag from '@/components/ui/SectionTag.astro';
+---
+<section class="section padding-xs black-bg v1">
+  <div class="career-benner-block">
+    <BackgroundVideo name="4293956-uhd-3840-2160-25fps" class="career-video" data-anim="About.Video" control>
+      <div class="career-gradient-block"></div>
+    </BackgroundVideo>
+  </div>
+  <div class="career-absolute">
+    <div class="container c-container">
+      <div class="career-content-wraapper">
+        <div class="career-heading-block">
+          <div class="section-heading left">
+            <SectionTag data-anim="About.Tag" label-class="body-text capital-medium white">JOIN OUR TEAM</SectionTag>
+            <div class="section-title-block">
+              <h1 class="section-title white" data-anim="About.Title">Building digital infrastructure for global logistics</h1>
+            </div>
+            <div class="section-text-wrap max-448">
+              <p class="text-regular body-color" data-anim="About.Text">Trusted by industry-leading operators, multimodal carriers, and enterprise logistics networks worldwide.</p>
+            </div>
+          </div>
+          <div class="career-button-group" data-anim="About.Button">
+            <PrimaryButton href="/contact-v1" variant="white-version">Get Started</PrimaryButton>
+            <SecondaryButton href="/services" variant="font-white-600">Explore Services</SecondaryButton>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

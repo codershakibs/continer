@@ -1,0 +1,23 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+interface Props extends HTMLAttributes<'a'> {
+  icon?: string;
+}
+
+const { icon = '/images/Frame-6.svg', class: className, ...rest } = Astro.props;
+---
+<a class:list={['button', className, 'c-inline-block']} {...rest}>
+  <div class="dark-button">
+    <div class="button-text-block">
+      <div class="text-regular morning-snow-top"><slot /></div>
+      <div class="text-regular morning-snow-bottom" aria-hidden="true"><slot /></div>
+    </div>
+    <div class="button-icon-wrap">
+      <div class="button-icon-block">
+        <img src={icon} loading="lazy" alt="" class="show-icon" />
+        <img src={icon} loading="lazy" alt="" class="hide-icon" />
+      </div>
+    </div>
+  </div>
+</a>

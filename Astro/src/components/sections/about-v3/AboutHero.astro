@@ -1,0 +1,37 @@
+---
+import BackgroundVideo from '@/components/ui/BackgroundVideo.astro';
+import Img from '@/components/ui/Img.astro';
+import SectionTag from '@/components/ui/SectionTag.astro';
+---
+<section class="section padding-xs about-v3">
+  <div class="about-three-absolute">
+    <div class="container c-container">
+      <div class="about-content-wraper about-three">
+        <div class="about-three-heading">
+          <div class="section-heading left">
+            <SectionTag data-anim="About.Tag" label-class="body-text capital-medium white">ABOUT CONTINEr</SectionTag>
+            <div class="section-title-block">
+              <h1 class="section-title white" data-anim="About.Title">Building digital infrastructure and automated systems to optimize global supply chains and empower transport networks worldwide.</h1>
+            </div>
+          </div>
+        </div>
+        <div class="about-bottom-section">
+          <div data-anim="About.Button">
+            <div class="about-short-video-wrap">
+              <div>
+                <BackgroundVideo name="11801945-hd-1080-1920-30fps-1" class="about-short-video" control></BackgroundVideo>
+              </div>
+              <div class="about-short-video-text-block">
+                <div class="text-small white-capital">Watch Video</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="benner-video-block">
+    <Img src="/images/About-Three.webp" alt="Logistics team and operations" class="about-three-image" loading="eager" widths={[500, 720]} sizes="100vw" />
+    <div class="gradient-block"></div>
+  </div>
+</section>

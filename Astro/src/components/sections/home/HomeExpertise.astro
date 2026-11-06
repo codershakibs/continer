@@ -1,0 +1,51 @@
+---
+import PrimaryButton from '@/components/ui/PrimaryButton.astro';
+import SectionSubHeading from '@/components/ui/SectionSubHeading.astro';
+import ExperienceCard from '@/components/cards/ExperienceCard.astro';
+import { getServices } from '@/lib/content';
+
+const services = await getServices();
+---
+<section class="section padding-top-m-bottom-x">
+  <div class="container c-container">
+    <div class="exprience-section-flex">
+      <div class="exprience-left">
+        <div class="exprience-heading-flex">
+          <div class="exprience-heading-block">
+            <SectionSubHeading variant="left" tag="OUR EXPERTISE" title="Simplify complexity and move with cargo clarity" />
+            <div>
+              <p class="text-regular" data-anim="Loading.Text">We provide tailored guidance across freight operations, route optimization, and supply-chain infrastructure to navigate logistics with precision</p>
+            </div>
+          </div>
+          <div class="exprience-buton-group" data-anim="items">
+            <PrimaryButton href="/services">See All Services</PrimaryButton>
+          </div>
+        </div>
+      </div>
+      <div class="exprience-right">
+        <div class="exprience-content-wrap">
+          <div class="service-collection">
+            <div role="list" class="exprience-content-block">
+              <div role="listitem" class="service-collection"><ExperienceCard service={services[0]} /></div>
+            </div>
+          </div>
+          <div class="service-collection">
+            <div role="list" class="exprience-content-block">
+              <div role="listitem" class="service-collection"><ExperienceCard service={services[1]} /></div>
+            </div>
+          </div>
+          <div class="service-collection">
+            <div role="list" class="exprience-content-block">
+              <div role="listitem" class="service-collection"><ExperienceCard service={services[2]} /></div>
+            </div>
+          </div>
+          <div class="service-collection">
+            <div role="list" class="exprience-content-block">
+              <div role="listitem"><ExperienceCard service={services[3]} /></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

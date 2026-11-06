@@ -1,0 +1,57 @@
+---
+import BackgroundVideo from '@/components/ui/BackgroundVideo.astro';
+import DarkButton from '@/components/ui/DarkButton.astro';
+import Img from '@/components/ui/Img.astro';
+import PrimaryButton from '@/components/ui/PrimaryButton.astro';
+import SecondaryButton from '@/components/ui/SecondaryButton.astro';
+import SectionTag from '@/components/ui/SectionTag.astro';
+---
+<section class="section home-banner">
+  <div class="home-three-absolute">
+    <div class="container v1 c-container">
+      <div class="home-content-wrapper home-one">
+        <div class="home-one-heading-block">
+          <div class="section-heading left">
+            <SectionTag data-anim="Home.Tag" label-class="body-text capital-medium white">EXPLORE LOGISTICS SYSTEM</SectionTag>
+            <div class="section-title-block">
+              <h1 class="section-title white" data-anim="Home.Title">Building digital infrastructure for global logistics</h1>
+            </div>
+            <div class="section-text-wrap max-448">
+              <p class="text-regular body-color" data-anim="Home.Text">Trusted by industry-leading operators, multimodal carriers, and enterprise logistics networks worldwide.</p>
+            </div>
+          </div>
+          <div class="home-button-group" data-anim="Home.Button">
+            <PrimaryButton href="/contact-v1" variant="white-version">Get Started</PrimaryButton>
+            <SecondaryButton href="/services" variant="font-white-600">Explore Services</SecondaryButton>
+          </div>
+        </div>
+        <div class="home-bottom-sectrion">
+          <div class="home-left">
+            <div class="home-author-wrap" data-anim="Home.Author">
+              <div class="home-short-img-block">
+                <Img src="/images/user_1user.webp" alt="Team member portrait" class="home-short-img" loading="eager" />
+              </div>
+              <div class="home-short-content">
+                <div class="home-short-text-block">
+                  <Img src="/images/Vector-3.svg" alt="" class="image" />
+                  <div class="text-small gesist-mono-body-text">Supporting rapid warehouse expansion through unified tracking.</div>
+                </div>
+                <div>
+                  <DarkButton href="/about-v1" variant="white" icon="/images/White-Svg.svg">Read Case</DarkButton>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div data-anim="Home.Logo">
+            <Img src="/images/Group-2147227693-2.svg" alt="Partner logo" class="home-logo" loading="eager" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="benner-video-block">
+      <BackgroundVideo name="home-video" class="benner-video" data-anim="Home.Video" control="v1">
+        <div class="benner-video-gradient-block"></div>
+      </BackgroundVideo>
+    </div>
+  </div>
+</section>

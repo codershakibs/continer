@@ -1,0 +1,48 @@
+---
+import Img from '@/components/ui/Img.astro';
+import SectionSubHeading from '@/components/ui/SectionSubHeading.astro';
+import { homeTrackingRoutesCardItems } from '@/data/sections/home';
+---
+<section class="section padding-top-x-bottm-m isabelline-color">
+  <div class="container c-container">
+    <div>
+      <div class="tracking-section-grid">
+        <div class="tracking-card">
+          <div class="tracking-image-block-wrap">
+            <Img src="/images/Tracking.webp" alt="Shipment tracking overview" class="tracking-block-image" loading="eager" widths={[500, 800, 840]} sizes="100vw" />
+          </div>
+          <div class="overlay-grid">
+            {Array.from({ length: 8 }).map(() => (
+              <div class="col"></div>
+            ))}
+          </div>
+        </div>
+        <div class="tracking-card first cell-a46dd3849bc49a354955">
+          <div class="tracking-card-item">
+            <div>
+              <SectionSubHeading variant="left" tag="LIVE MONITORING" title="Track every shipment, vehicle, and route from a single screen." />
+            </div>
+            <div class="tracking-center" data-anim="items">
+              {homeTrackingRoutesCardItems.map((row) => (
+                <div class="routes-card">
+                  <div class="routes-items">
+                    <div class="routes-top">
+                      <row.icon class="routes-svg" />
+                    </div>
+                    <div class="routes-bottom">
+                      <div class="text-xs">{row.text}</div>
+                      <div class="text-regular alabaster-color">{row.text2}</div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div data-anim="Sub.Tag">
+              <div class="body-text dark-color">Delivering real-time control and zero-delay logistics.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

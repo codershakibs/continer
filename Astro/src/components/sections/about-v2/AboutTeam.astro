@@ -1,0 +1,39 @@
+---
+import Img from '@/components/ui/Img.astro';
+import PrimaryButton from '@/components/ui/PrimaryButton.astro';
+import SectionSubHeading from '@/components/ui/SectionSubHeading.astro';
+import TeamImageFlexIcon from '@/assets/icons/team-image-flex-icon.svg';
+import { aboutTeamTeamImageFlexItems } from '@/data/sections/about-v2';
+---
+<section class="section padding-m">
+  <div class="container c-container">
+    <div>
+      <div class="team-section-grid">
+        <div class="team-cards">
+          <div class="team-card-item">
+            <SectionSubHeading variant="left" tag="JOIN OUR TEAM" title="Shape the future of global supply chain intelligence" />
+            <div>
+              <p class="text-regular slate-gray" data-anim="Loading.Text">A dedicated council of former venture capitalist partners, operational growth leaders, and enterprise scaling coaches.</p>
+            </div>
+            <div class="team-button-group" data-anim="Sub.Tag">
+              <PrimaryButton href="/">Explore Careers</PrimaryButton>
+            </div>
+          </div>
+        </div>
+        <div class="team-cards-image-block">
+          <Img src="/images/Team-Image.webp" alt="Team member portrait" class="team-image" loading="eager" widths={[500, 800, 1080, 1360]} sizes="(max-width: 479px) 100vw, (max-width: 991px) 437px, 564px" />
+          <div class="team-image-absolute">
+            <div class="team-image-content-block" data-anim="items">
+              {aboutTeamTeamImageFlexItems.map((item) => (
+                <div class="team-image-flex">
+                  <TeamImageFlexIcon class="plus-svg" />
+                  <div class="text-small white-slate">{item}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

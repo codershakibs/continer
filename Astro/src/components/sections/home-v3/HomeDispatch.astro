@@ -1,0 +1,48 @@
+---
+import BackgroundVideo from '@/components/ui/BackgroundVideo.astro';
+import Img from '@/components/ui/Img.astro';
+import { homeDispatchBodyTextItems, homeDispatchDispatchCardItems } from '@/data/sections/home-v3';
+---
+<section class="section night-color padding-l">
+  <div class="container c-container">
+    <div>
+      <div class="dispatch-top-section" data-anim="Loading.Card">
+        <BackgroundVideo name="home2-hero-video" class="dispatch-video" control></BackgroundVideo>
+        <div class="dispatch-absolute-block">
+          <div class="dispatch-absolute-item">
+            <div class="dispatch-content" data-anim="items">
+              <div>
+                <div class="text-extra-large white">&quot;Global supply chains don’t need more operational friction — they need real-time telemetry, clear routing, and automated execution.&quot;</div>
+              </div>
+              <div class="dispatch-author-wrap">
+                <div class="dispatch-author-image-block">
+                  <Img src="/images/Dispatch.webp" alt="Dispatch coordinator" class="dispatch-author-image" loading="eager" />
+                </div>
+                <div class="dispatch-author-info-block">
+                  {homeDispatchBodyTextItems.map((item) => (
+                    <div class={item.classes}>{item.text}</div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="dispatch-section-grid" data-anim="items">
+        {homeDispatchDispatchCardItems.map((row) => (
+          <div class={row.classes}>
+            <div class="dispatch-item">
+              <div class="dispatch-card-top">
+                <row.icon class="dispatch-logo" />
+              </div>
+              <div class="dispatch-card-bottom">
+                <div class="text-regular morning-snow">{row.text}</div>
+                <div class="body-text warm-pearl">{row.text2}</div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

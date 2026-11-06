@@ -1,0 +1,87 @@
+---
+import { aboutBrandsBrandCardItems, aboutBrandsCounterNumberColItems, aboutBrandsTextLBlackItems, aboutBrandsCounterNumberColItems2 } from '@/data/sections/about-v1';
+---
+<section class="section isabelline-color padding-l">
+  <div class="container c-container">
+    <div>
+      <div>
+        <div class="brand-flex" data-anim="items">
+          {aboutBrandsBrandCardItems.map((item) => (
+            <div class="brand-card">
+              <div class="brand-card-flex">
+                <div>
+                  <div class="text-small night-uppercase">{item.text}</div>
+                </div>
+                <div>
+                  <div class="counter-number-block">
+                    <div class="counter-number-col-wrap">
+                      {item.counterNumberColList.map((row) => (
+                        <div class="counter-number-col">
+                          <div class={row.classes}>
+                            {row.textLBlackList.map((cell) => (
+                              <div class="text-l-black">{cell}</div>
+                            ))}
+                          </div>
+                        </div>
+                      ))}
+                      <div class="text-l-black">+</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+          <div class="brand-card">
+            <div class="brand-card-flex">
+              <div>
+                <div class="text-small night-uppercase">Cargo value optimized annually</div>
+              </div>
+              <div>
+                <div class="counter-number-block">
+                  <div class="counter-number-col-wrap">
+                    <div class="text-l-black">$</div>
+                    {aboutBrandsCounterNumberColItems.map((unit) => (
+                      <div class="counter-number-col">
+                        <div class={unit.classes}>
+                          {unit.textLBlackList.map((item) => (
+                            <div class="text-l-black">{item}</div>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                    {aboutBrandsTextLBlackItems.map((row) => (
+                      <div class="text-l-black">{row}</div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="brand-card">
+            <div class="brand-card-flex">
+              <div>
+                <div class="text-small night-uppercase">On-time delivery rate</div>
+              </div>
+              <div>
+                <div class="counter-number-block">
+                  <div class="counter-number-col-wrap">
+                    {aboutBrandsCounterNumberColItems2.map((cell) => (
+                      <div class="counter-number-col">
+                        <div class={cell.classes}>
+                          {cell.textLBlackList.map((unit) => (
+                            <div class="text-l-black">{unit}</div>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                    <div class="text-l-black">%</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

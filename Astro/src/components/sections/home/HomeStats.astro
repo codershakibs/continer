@@ -1,0 +1,30 @@
+---
+import { homeStatsHomeCardItems } from '@/data/sections/home';
+---
+<section class="section padding-m">
+  <div class="container c-container">
+    <div class="home-content-wrapper">
+      <div class="home-section-grid" data-anim="items">
+        {homeStatsHomeCardItems.map((item) => (
+          <div class="home-card">
+            <div class="home-card-flex">
+              <div>
+                <div class="text-s white">{item.text}</div>
+              </div>
+              <div class="home-card-logo-block">
+                <item.icon class="home-card-logo" />
+              </div>
+              <div>
+                <div class="text-regular white">{item.text2}</div>
+              </div>
+            </div>
+            <div class="home-card-absolute-1 _01"></div>
+            <div class="home-card-absolute-2 _02"></div>
+            <div class="home-card-absolute-3 _03"></div>
+            <div class="home-card-absolute-4 _04"></div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

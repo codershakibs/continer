@@ -1,0 +1,57 @@
+---
+import PrimaryButton from '@/components/ui/PrimaryButton.astro';
+import SectionTag from '@/components/ui/SectionTag.astro';
+import BackgroundVideo from '@/components/ui/BackgroundVideo.astro';
+
+interface Props {
+  variant?: 'base' | 'padding-top-x-bottom-xs';
+  tag?: string;
+  title?: string;
+  buttonLabel?: string;
+  buttonHref?: string;
+}
+
+const {
+  variant = 'base',
+  tag = 'GET STARTED TODAY',
+  title = 'Ready to orchestrate your global supply chain?',
+  buttonLabel = 'Book A Call',
+  buttonHref = '/contact-v1',
+} = Astro.props;
+const v = variant !== 'base' ? `v-cta-${variant}` : undefined;
+---
+<section class:list={['section', 'padding-xs', 'max', v]}>
+  <div class="container">
+    <div class="cta-content">
+      <div class:list={['cta-absolute', v]}>
+        <div class:list={['cta-content-wrapper', v]}>
+          <div class="cta-top-section">
+            <div class="section-sub-heading">
+              <SectionTag data-anim="Sub.Tag" label-class="body-text capital-medium white">{tag}</SectionTag>
+              <div class="section-sub-title-block">
+                <div data-anim="Sub.Title" class="text-l">{title}</div>
+              </div>
+            </div>
+            <div data-anim="items" class="cta-author-wrap">
+              <div class="cta-author-block">
+                <img loading="lazy" src="/images/Cta-Author.svg" alt="" class="cta-author-image" />
+                <div class="cta-author-info">
+                  <div class="text-regular white-medium">Need assistance?</div>
+                  <div class="body-text pure-white">We're here to provide 24/7 technical support</div>
+                </div>
+              </div>
+              <div class="cta-button-group">
+                <PrimaryButton href={buttonHref}>{buttonLabel}</PrimaryButton>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-anim="Loading.Card" class="cta-video-wrap">
+        <BackgroundVideo name="cta-video-3" class={['cta-video', v].filter(Boolean).join(' ')} control="is-cta">
+          <div class:list={['cta-gradient-block', v]}></div>
+        </BackgroundVideo>
+      </div>
+    </div>
+  </div>
+</section>

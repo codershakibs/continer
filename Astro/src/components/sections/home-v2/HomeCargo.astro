@@ -1,0 +1,49 @@
+---
+import SectionTag from '@/components/ui/SectionTag.astro';
+import ServiceLinkCard from '@/components/cards/ServiceLinkCard.astro';
+import { getServices } from '@/lib/content';
+
+const services = await getServices();
+---
+<section class="section night-color padding-top-m-bottom-l">
+  <div class="cargo-container" data-anim="Loading.Card">
+    <div class="philosophy-absolute">
+      <div class="cargoo-content-wrapper">
+        <div class="cargo-content-block">
+          <div class="cargo-content-wrap">
+            <div class="cargo-top-section">
+              <div data-anim="Sub.Tag">
+                <SectionTag data-anim="About.Tag" label-class="body-text capital-medium">OUR EXPERTISE</SectionTag>
+              </div>
+              <div class="cargo-content-wrapp" data-anim="items">
+                <div>
+                  <div role="list" class="cargo-content">
+                    <div role="listitem"><ServiceLinkCard service={services[0]} /></div>
+                  </div>
+                </div>
+                <div>
+                  <div role="list" class="cargo-content">
+                    <div role="listitem"><ServiceLinkCard service={services[1]} /></div>
+                  </div>
+                </div>
+                <div>
+                  <div role="list" class="cargo-content">
+                    <div role="listitem"><ServiceLinkCard service={services[2]} /></div>
+                  </div>
+                </div>
+                <div>
+                  <div role="list" class="cargo-content">
+                    <div role="listitem"><ServiceLinkCard service={services[3]} /></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <p class="body-text" data-anim="Loading.Text">Supporting organizations in aligning teams, priorities, and execution<br />through practical systems that reduce friction and create greater clarity across business operations.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

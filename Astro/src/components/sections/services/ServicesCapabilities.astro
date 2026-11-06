@@ -1,0 +1,37 @@
+---
+import Img from '@/components/ui/Img.astro';
+import SectionSubHeading from '@/components/ui/SectionSubHeading.astro';
+import CapabilitesListItemIcon from '@/assets/icons/capabilites-list-item-icon.svg';
+import { servicesCapabilitiesCapabilitesListItemItems } from '@/data/sections/services';
+---
+<section class="section padding-l">
+  <div class="container c-container">
+    <div>
+      <div class="capabilites-grid">
+        <div data-anim="Card.Animation">
+          <div class="capabilites-image-block">
+            <Img src="/images/service-image.avif" alt="Continer logistics operations" class="capabilites-image" loading="eager" />
+          </div>
+        </div>
+        <div class="cell-36a5268134c59a35497b">
+          <div class="capabilites-items">
+            <div class="capabilites-card-top">
+              <SectionSubHeading variant="left" tag="CORE CAPABILITIES" title="Precision-Driven Freight and Distribution Networks" />
+              <div data-anim="Loading.Text">
+                <p class="text-regular">Modern supply chains demand absolute visibility and speed. Our infrastructure aligns rigorous tracking protocols with automated routing to eliminate delivery bottlenecks.</p>
+              </div>
+            </div>
+            <div class="capabilites-list-wrap" data-anim="items">
+              {servicesCapabilitiesCapabilitesListItemItems.map((item) => (
+                <div class="capabilites-list-item">
+                  <CapabilitesListItemIcon class="capabilites-svg" />
+                  <div class="text-regular eri-black">{item}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

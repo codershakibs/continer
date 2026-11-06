@@ -1,0 +1,27 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import RollButton from '@/components/ui/RollButton.astro';
+
+interface Props {
+  caseStudy: CollectionEntry<'case-studies'>;
+  /** Background photo from `public/images`. */
+  image: string;
+  loading?: 'eager' | 'lazy';
+}
+
+const { caseStudy, image, loading = 'lazy' } = Astro.props;
+---
+<div class="testimonal-content-block">
+  <img src={image} loading={loading} decoding="async" alt="" class="testimonial-bg-image" />
+  <div class="testimonial-item">
+    <div class="testimonials-top"><slot name="icon" /></div>
+    <div class="testimonials-bottom">
+      <div class="testimonial-left">
+        <div class="text-s white">{caseStudy.data.title}</div>
+      </div>
+      <div class="testimonial-right">
+        <RollButton href={`/case-study/${caseStudy.id}`} aria-label={`View case study: ${caseStudy.data.title}`}>View Case Study</RollButton>
+      </div>
+    </div>
+  </div>
+</div>

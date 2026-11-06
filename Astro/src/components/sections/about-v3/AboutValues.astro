@@ -1,0 +1,71 @@
+---
+import Img from '@/components/ui/Img.astro';
+import SectionSubHeading from '@/components/ui/SectionSubHeading.astro';
+import { aboutValuesContinerTagBlockItems, aboutValuesContinerCardItems, aboutValuesPrecisionLogoFlexItems } from '@/data/sections/about-v3';
+---
+<section class="section isabelline-color">
+  <div class="container c-container">
+    <div>
+      <div class="continer-heading">
+        <SectionSubHeading tag="THE CONTINER™ PRINCIPLES" title="Built on transparency, telemetry, and total execution" />
+      </div>
+      <div class="sectin-fil"></div>
+      <div class="continer-content-wrap">
+        <div class="continer-section-flex">
+          <div class="continer-left">
+            <div class="continer-tag-wrap" data-anim="items">
+              {aboutValuesContinerTagBlockItems.map((item) => (
+                <a href={item.href} class="continer-tag-block c-inline-block">
+                  {item.textRegularList.map((row) => (
+                    <div class="text-regular eriblack-medium">{row}</div>
+                  ))}
+                </a>
+              ))}
+            </div>
+          </div>
+          <div class="continer-right">
+            {aboutValuesContinerCardItems.map((cell) => (
+              <div id={cell.id} class="continer-card">
+                <div class="continer-card-item">
+                  <div class="continer-card-top" data-anim="items">
+                    <div class="body-text medium-red-capital">{cell.text}</div>
+                    <div class="text-large font-normal">{cell.text2}</div>
+                  </div>
+                  <div class="continer-card-bottom">
+                    <Img src={cell.image} alt="Container logistics operations" class="continer-image" loading="eager" widths={[500, 800, 929]} sizes="100vw" />
+                    <div class="overlay-grid">
+                      {Array.from({ length: 8 }).map(() => (
+                        <div class="col"></div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div class="continer-content">
+          <div class="precision-flex">
+            {aboutValuesPrecisionLogoFlexItems.map((unit) => (
+              <div class="precision-logo-flex">
+                {unit.continerCardList.map((item) => (
+                  <div class="continer-card">
+                    <div class="continer-card-item">
+                      <div class="continer-card-top" data-anim="items">
+                        <div class="body-text medium-red-capital">{item.text}</div>
+                        <div class="text-large font-normal">{item.text2}</div>
+                      </div>
+                      <div class="continer-card-bottom">
+                        <Img src={item.image} alt="Container logistics operations" class="continer-image" loading="eager" widths={[500, 800, 929]} sizes="100vw" />
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

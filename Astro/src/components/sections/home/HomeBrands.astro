@@ -1,0 +1,48 @@
+---
+import Img from '@/components/ui/Img.astro';
+import SectionTag from '@/components/ui/SectionTag.astro';
+import { homeBrandsBrandLogoMarqueeItems, homeBrandsBrandLogoMarqueeRightItems } from '@/data/sections/home';
+---
+<section class="section padding-top-m-bottom-x isabelline-color">
+  <div>
+    <div class="brand-logo-content" data-anim="Card.Animation">
+      <div class="brand-logo-marquee-block">
+        {homeBrandsBrandLogoMarqueeItems.map((item) => (
+          <div class="brand-logo-marquee">
+            {item.logoCardList.map((row) => (
+              <div class="logo-card">
+                <div>
+                  <Img src={row.image} alt={row.alt} class="brand-iocn" />
+                </div>
+                {row.logoCardAbsoluteList.map((cell) => (
+                  <div class={cell}></div>
+                ))}
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
+    </div>
+    <div class="story-bottom" data-anim="Card.Animation">
+      <div class="brand-logo-marquee-block">
+        {homeBrandsBrandLogoMarqueeRightItems.map((unit) => (
+          <div class="brand-logo-marquee-right">
+            {unit.logoCardList.map((item) => (
+              <div class="logo-card">
+                <div>
+                  <Img src={item.image} alt={item.alt} class="brand-iocn" />
+                </div>
+                {item.logoCardAbsoluteList.map((row) => (
+                  <div class={row}></div>
+                ))}
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
+    </div>
+    <div class="brand-tag">
+      <SectionTag data-anim="Sub.Tag" label-class="body-text capital-medium">Country&#x27;s have work with</SectionTag>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,45 @@
+---
+import SectionSubHeading from '@/components/ui/SectionSubHeading.astro';
+import { faqItems } from '@/data/faq';
+
+interface Props {
+  variant?: 'base' | 'home-v2';
+  tag?: string;
+  title?: string;
+}
+
+const { variant = 'base', tag = 'FAQ', title = 'Questions, answered with clarity' } = Astro.props;
+---
+<section class:list={['section', { 'v-faq-home-v2': variant === 'home-v2' }]}>
+  <div class="container c-container">
+    <div class="faq-content-wrapper">
+      <div class="faq-flex">
+        <div class="faq-left">
+          <div class="faq-sub-heading">
+            <SectionSubHeading variant="left" tag={tag} title={title} />
+          </div>
+        </div>
+        <div class="faq-right">
+          <div class="accordion-faq">
+            {faqItems.map((item, index) => (
+              <div class:list={['faq-item', { active: index === 0 }]}>
+                <div class="faq-item-top">
+                  <div class="text-large">{index + 1}. {item.question}</div>
+                  <div class="faq-item-icon">
+                    <div class="faq-item-icon-lline-1"></div>
+                    <div class:list={['faq-item-icon-lline-2', { active: index === 0 }]}></div>
+                  </div>
+                </div>
+                <div class="faq-item-bottom">
+                  <div class="faq-item-botttom-wrapper">
+                    <div class="text-regular">{item.answer}</div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

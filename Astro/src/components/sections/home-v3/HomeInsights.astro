@@ -1,0 +1,41 @@
+---
+import SecondaryButton from '@/components/ui/SecondaryButton.astro';
+import InsightCard from '@/components/cards/InsightCard.astro';
+import { getInsightPosts } from '@/lib/content';
+
+const insights = await getInsightPosts();
+---
+<section class="section isabelline-color padding-top-m-bottom-x">
+  <div class="container c-container">
+    <div>
+      <div class="insights-top-section">
+        <div class="insights-heading-block">
+          <div class="section-sub-heading left-side">
+            <div class="section-tag-block" data-anim="Sub.Tag">
+              <div class="insights-bg"></div>
+              <div class="text-mini gesist-mono-eriblack-300">Insights</div>
+            </div>
+            <div>
+              <h2 class="heading" data-anim="Sub.Title">Ideas, research, and perspectives</h2>
+            </div>
+          </div>
+        </div>
+        <div data-anim="Sub.Tag">
+          <SecondaryButton href="/blog" variant="hide-show">View all insights</SecondaryButton>
+        </div>
+      </div>
+      <div class="insights-content" data-anim="items">
+        <div class="collection-item">
+          <div role="list" class="insights-content-wrap">
+            <div role="listitem"><InsightCard post={insights[1]} /></div>
+          </div>
+        </div>
+        <div class="collection-item">
+          <div role="list" class="insights-content-wrap">
+            <div role="listitem"><InsightCard post={insights[0]} reverse /></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

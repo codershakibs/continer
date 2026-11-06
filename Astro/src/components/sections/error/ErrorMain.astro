@@ -1,0 +1,32 @@
+---
+import BackgroundVideo from '@/components/ui/BackgroundVideo.astro';
+import PrimaryButton from '@/components/ui/PrimaryButton.astro';
+import SectionTag from '@/components/ui/SectionTag.astro';
+---
+<div class="section is-error">
+  <div class="error-container">
+    <div class="black-bg">
+      <div class="error-video-block">
+        <BackgroundVideo name="error-video" class="error-video" control>
+          <div class="error-content-absolute">
+            <div class="error-content">
+              <div class="section-heading">
+                <SectionTag data-anim="Privacy.Tag" label-class="body-text capital-medium white">404</SectionTag>
+                <div class="section-title-block">
+                  <h1 class="section-title white" data-anim="Privacy.Title">Page Not Found</h1>
+                </div>
+                <div class="section-text-block">
+                  <p class="text-regular isabelline-color" data-anim="Privacy.Text">The link may be outdated, removed, or disconnected. Good news: the rest of the site still works.</p>
+                </div>
+              </div>
+              <div class="error-button-block" data-anim="Privacy.Text-2">
+                <PrimaryButton href="/" variant="red-version">Back to Homepage</PrimaryButton>
+              </div>
+            </div>
+          </div>
+          <div class="error-bg"></div>
+        </BackgroundVideo>
+      </div>
+    </div>
+  </div>
+</div>

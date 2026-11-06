@@ -1,0 +1,55 @@
+---
+import Img from '@/components/ui/Img.astro';
+import SectionSubHeading from '@/components/ui/SectionSubHeading.astro';
+import CaseTestimonialCard from '@/components/cards/CaseTestimonialCard.astro';
+import LeftArrowIcon from '@/assets/icons/left-arrow-icon.svg';
+import RightArowIcon from '@/assets/icons/right-arow-icon.svg';
+import TestimonialsTopIcon from '@/assets/icons/testimonials-top-icon.svg';
+import TestimonialsTopIcon2 from '@/assets/icons/testimonials-top-icon2.svg';
+import { getCaseStudies } from '@/lib/content';
+
+const caseStudies = await getCaseStudies();
+---
+<section class="section night-color padding-l">
+  <div class="container c-container">
+    <div class="testimonial-content-wrapper">
+      <div class="testimonial-top">
+        <SectionSubHeading variant="white-left" tag-class="body-text capital-medium v-subheading-white-left" tag="20+ years of expertise" title-class="heading v-subheading-white-left" title="How experience shaped the way we work." />
+      </div>
+      <div data-anim="Card.Animation">
+        <div data-delay="4000" data-animation="slide" data-autoplay="false" data-duration="500" class="testimonial margin c-slider">
+          <div class="testimonial-mask c-slider-mask">
+            <div class="testimonial-side c-slide">
+              <div>
+                <div role="list">
+                  <div role="listitem"><CaseTestimonialCard caseStudy={caseStudies[0]} image="/images/Cart-3.webp" loading="eager"><TestimonialsTopIcon class="testimonial-top-logo" slot="icon" /></CaseTestimonialCard></div>
+                </div>
+              </div>
+            </div>
+            <div class="testimonial-side c-slide">
+              <div>
+                <div role="list">
+                  <div role="listitem"><CaseTestimonialCard caseStudy={caseStudies[1]} image="/images/Cart-4.webp"><TestimonialsTopIcon2 class="testimonial-top-logo" slot="icon" /></CaseTestimonialCard></div>
+                </div>
+              </div>
+            </div>
+            <div class="testimonial-side c-slide">
+              <div>
+                <div role="list">
+                  <div role="listitem"><CaseTestimonialCard caseStudy={caseStudies[2]} image="/images/Cart-5.webp" loading="eager"><Img src="/images/Vector-20.svg" alt="" class="testimonial-svgs" slot="icon" /></CaseTestimonialCard></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="left-arrow c-slider-arrow-left">
+            <LeftArrowIcon />
+          </div>
+          <div class="right-arow c-slider-arrow-right">
+            <RightArowIcon />
+          </div>
+          <div class="side-nav c-slider-nav c-round c-num"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,63 @@
+---
+import config from '@/config/config.json';
+
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+  type?: 'website' | 'article';
+  noindex?: boolean;
+  publishedTime?: string;
+  /** Extra JSON-LD objects for this page. */
+  schema?: Record<string, unknown>[];
+}
+
+const { title, description = config.site.description, image = config.site.ogImage, type = 'website', noindex = false, publishedTime, schema = [] } = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url).href;
+const imageUrl = new URL(image, Astro.site ?? Astro.url).href;
+const origin = new URL('/', Astro.site ?? Astro.url).href;
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: config.site.name,
+    url: origin,
+    logo: new URL(config.site.logo, origin).href,
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: config.site.name,
+    url: origin,
+  },
+  ...schema,
+];
+---
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+<meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
+
+<meta property="og:type" content={type} />
+<meta property="og:site_name" content={config.site.name} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={imageUrl} />
+{publishedTime && <meta property="article:published_time" content={publishedTime} />}
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={imageUrl} />
+
+<link rel="icon" type="image/webp" sizes="32x32" href="/images/favicon.webp" media="(prefers-color-scheme: light)" />
+<link rel="icon" type="image/webp" sizes="32x32" href="/images/favicon-dark.webp" media="(prefers-color-scheme: dark)" />
+<link rel="icon" type="image/webp" sizes="48x48" href="/images/favicon-48.webp" />
+<link rel="icon" type="image/webp" sizes="192x192" href="/images/webclip-192.webp" />
+<link rel="apple-touch-icon" sizes="180x180" href="/images/webclip-180.webp" />
+<link rel="sitemap" href="/sitemap-index.xml" />
+
+<script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />

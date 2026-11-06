@@ -1,0 +1,29 @@
+---
+import PrimaryButton from '@/components/ui/PrimaryButton.astro';
+import SectionTag from '@/components/ui/SectionTag.astro';
+import { servicesHeroPrimaryButtonItems } from '@/data/sections/services';
+---
+<section class="section">
+  <div class="container c-container">
+    <div>
+      <div class="service-top-section">
+        <div>
+          <div class="section-heading">
+            <SectionTag data-anim="Contact.Tag" label-class="body-text capital-medium">GLOBAL LOGISTICS &amp; SUPPLY CHAIN</SectionTag>
+            <div class="section-title-block">
+              <h1 class="section-title" data-anim="Contact.Title">Seamless Freight &amp; Supply Chain Solutions</h1>
+            </div>
+            <div class="section-text-wrap max-448">
+              <p class="text-regular raisin-black" data-anim="Contact.Text">Accelerate your enterprise distribution with high performance logistics frameworks designed for real-time tracking and zero friction.</p>
+            </div>
+          </div>
+        </div>
+        <div class="service-button-block" data-anim="Contact.Card01">
+          {servicesHeroPrimaryButtonItems.map((item) => (
+            <PrimaryButton href={item.href} variant={item.variant}>{item.text}</PrimaryButton>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

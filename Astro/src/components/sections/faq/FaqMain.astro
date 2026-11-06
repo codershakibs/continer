@@ -1,0 +1,82 @@
+---
+import SectionTag from '@/components/ui/SectionTag.astro';
+import SectionTagBlockIcon from '@/assets/icons/section-tag-block-icon.svg';
+import { faqMainFaqTagBlockItems, faqMainFaqItemItems, faqMainAccordionFaqItems } from '@/data/sections/faq';
+---
+<section class="section">
+  <div class="container c-container">
+    <div>
+      <div class="faq-top-section">
+        <div class="section-heading">
+          <SectionTag data-anim="About.Tag" label-class="body-text capital-medium">FAQ</SectionTag>
+          <div class="section-title-block">
+            <h1 class="section-title" data-anim="About.Title">Frequently ask questions</h1>
+          </div>
+          <div class="section-text-block">
+            <p class="text-regular raisin-black" data-anim="About.Text">We step inside fast-moving teams to remove execution debt and align modern data funnels. No guesswork.</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="faq-section-flex">
+          <div class="faq-left hide">
+            <div class="faq-tag-wrap" data-anim="Faq.Tag">
+              {faqMainFaqTagBlockItems.map((item) => (
+                <a href={item.href} class="faq-tag-block c-inline-block">
+                  {item.textRegularList.map((row) => (
+                    <div class="text-regular eriblack-medium">{row}</div>
+                  ))}
+                </a>
+              ))}
+            </div>
+          </div>
+          <div class="faq-right">
+            <div id="Faq-Card-01" class="accordion-faq" data-anim="group">
+              <div class="section-tag-block margin-2">
+                <SectionTagBlockIcon class="svg" />
+                <div class="body-text capital-medium">General Questions</div>
+              </div>
+              {faqMainFaqItemItems.map((cell) => (
+                <div class={cell.classes}>
+                  <div class="faq-item-top">
+                    <div class="text-large">{cell.text}</div>
+                    <div class="faq-item-icon">
+                      <div class="faq-item-icon-lline-1"></div>
+                      <div class={cell.classes2}></div>
+                    </div>
+                  </div>
+                  <div class="faq-item-bottom">
+                    <div class="faq-item-botttom-wrapper">
+                      <div class="text-regular">{cell.text2}</div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            {faqMainAccordionFaqItems.map((unit) => (
+              <div id={unit.id} class="accordion-faq" data-anim="group">
+                <SectionTag class="margin-2" label-class="body-text capital-medium">{unit.text}</SectionTag>
+                {unit.faqItemList.map((item) => (
+                  <div class={item.classes}>
+                    <div class="faq-item-top">
+                      <div class="text-large">{item.text}</div>
+                      <div class="faq-item-icon">
+                        <div class="faq-item-icon-lline-1"></div>
+                        <div class={item.classes2}></div>
+                      </div>
+                    </div>
+                    <div class="faq-item-bottom">
+                      <div class="faq-item-botttom-wrapper">
+                        <div class="text-regular">{item.text2}</div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

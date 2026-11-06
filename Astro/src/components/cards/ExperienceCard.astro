@@ -1,0 +1,33 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { Image } from 'astro:assets';
+
+interface Props {
+  service: CollectionEntry<'services'>;
+}
+
+const { service } = Astro.props;
+---
+<a href={`/service/${service.id}`} class="exprience-card c-inline-block">
+  <div class="exprience-card-item">
+    <div class="exprience-image-block">
+      <Image src={service.data.image} alt="" class="exprience-image" />
+    </div>
+    <div class="exprience-absolute">
+      <div class="exprience-card-content">
+        <div class="exprience-card-icon-block">
+          <Image src={service.data.icon} alt="" class="servicer-icon" />
+        </div>
+        <div class="exprience-card-title-block">
+          <div class="text-xs">{service.data.title}</div>
+        </div>
+        <div class="exprience-card-text-block">
+          <div class="body-text white">{service.data.excerpt}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="overlay-grid" aria-hidden="true">
+    {Array.from({ length: 8 }).map(() => <div class="col"></div>)}
+  </div>
+</a>

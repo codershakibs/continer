@@ -1,0 +1,138 @@
+---
+import PrimaryButton from '@/components/ui/PrimaryButton.astro';
+import SecondaryButton from '@/components/ui/SecondaryButton.astro';
+import SectionTag from '@/components/ui/SectionTag.astro';
+import { styleGuideMainStyleGuideTagItems, styleGuideMainTextMiniItems, styleGuideMainColorCardItems } from '@/data/sections/style-guide';
+---
+<section class="section">
+  <div class="container c-container">
+    <div>
+      <div class="style-guide-top-section">
+        <div class="section-heading">
+          <SectionTag data-anim="Privacy.Tag" label-class="body-text capital-medium">Styles</SectionTag>
+          <div class="section-title-block">
+            <h1 class="section-title" data-anim="Privacy.Title">Style Guide</h1>
+          </div>
+          <div class="section-text-wrap">
+            <p class="text-regular raisin-black" data-anim="Privacy.Text">We don’t just reply to emails, we start conversations that shape ideas.</p>
+          </div>
+        </div>
+      </div>
+      <div class="style-guide-section-flex">
+        <div class="style-guide-left hide">
+          <div class="style-guide-link-wrap">
+            <div class="style-guide-tag-block" data-anim="items">
+              {styleGuideMainStyleGuideTagItems.map((item) => (
+                <a href={item.href} class="style-guide-tag c-inline-block">
+                  {item.textRegularList.map((row) => (
+                    <div class="text-regular eriblack-medium">{row}</div>
+                  ))}
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="style-guide-item">
+            <div id="Paragraph" class="style-guide-top">
+              <div class="style-guide-text-block _02">
+                <p class="text-large" data-anim="Privacy.Text-4">Typography</p>
+                <div class="text-regular" data-anim="Privacy.Text-5">Type carries meaning before a word is read. The styles here are built to do real work: establishing hierarchy, directing attention, and making dense content feel light. Every scale step, weight, and line height has been calibrated to work together, so the system feels effortless in use.</div>
+              </div>
+            </div>
+            <div id="Typography" class="typography-section">
+              <div class="typography-all-tag" data-anim="items">
+                <h1>Heading</h1>
+                <h2>Heading</h2>
+                <h3>Heading</h3>
+                <h4>Heading</h4>
+                <h5>Heading</h5>
+                <h6>Heading</h6>
+              </div>
+              <div class="typography-all-text-tag" data-anim="items">
+                <div class="text-large">Text Large</div>
+                <div class="text-regular">Text Large (Strong)</div>
+                <div class="body-text capital-medium">Text Medium</div>
+                <div class="text-small font-700">Text Medium (Strong)</div>
+                {styleGuideMainTextMiniItems.map((cell) => (
+                  <div class="text-mini">{cell}</div>
+                ))}
+                <div class="text-small gesist-mono">Label</div>
+                <div class="text-mini gesist-mono">Label</div>
+              </div>
+            </div>
+            <div id="Colors" class="color-section">
+              <div>
+                <div class="style-guide-text-block _02" data-anim="items">
+                  <p class="text-large">Colors</p>
+                  <div class="text-regular">The color system is built to be practical, not decorative. It’s based on a small set of neutrals for structure and a few accents to bring focus where it matters. Contrast and usability always come first. You’ll find colors for base surfaces, text, borders, and highlights. They are designed to work together out of the box, but you can easily adjust them to match your brand.</div>
+                </div>
+              </div>
+              <div class="color-grid" data-anim="items">
+                {styleGuideMainColorCardItems.map((unit) => (
+                  <div class="color-card">
+                    <div class="color-item">
+                      <div class={unit.classes}></div>
+                      <div class="color-flex">
+                        <div class="text-regular eriblack-medium">{unit.text}</div>
+                        <div class="color-tag">
+                          <div class="text-regular eri-black">{unit.text2}</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div id="Buttons" class="button-section" data-anim="items">
+              <div>
+                <div class="style-guide-text-block _02">
+                  <p class="text-large">Buttons</p>
+                  <div class="text-regular">Buttons are designed to be clear and predictable. Primary actions stand out and guide the user forward. Secondary and tertiary buttons support without competing for attention. The goal is simple: users should always know what to do next without thinking.</div>
+                </div>
+              </div>
+              <div class="button-bottom">
+                <div class="button-group">
+                  <div class="text-large">Primary</div>
+                  <PrimaryButton href="/">Get Template</PrimaryButton>
+                </div>
+                <div class="button-group">
+                  <div class="text-large">Primary</div>
+                  <SecondaryButton href="#">Explore pages</SecondaryButton>
+                </div>
+              </div>
+            </div>
+            <div id="Inputs">
+              <div class="input-top" data-anim="items">
+                <div class="style-guide-text-block _02">
+                  <p class="text-large">Inputs</p>
+                  <div class="text-regular">Inputs are built to feel calm and easy to use. Different states like default, active, and filled help users understand where they are and what’s happening. Everything is kept minimal so forms don’t feel heavy or distracting. Use them as a base and adapt if your project needs something more custom.</div>
+                </div>
+                <div class="contact-form-wrap c-form" data-form>
+                  <form id="email-form" method="post" class="contact-form">
+                    <div class="contact-toggle-flex">
+                      <div class="contact-toggle-block">
+                        <label for="Name" class="contact-form-text">Text Field</label>
+                        <input maxlength="256" name="Name" placeholder="Enter your full name" type="text" id="Name" required="" class="contact-toggle-field c-input" />
+                      </div>
+                      <div class="contact-toggle-block cell-7c607d5fbbce9a354958">
+                        <label for="field" class="contact-form-text">Text Area</label>
+                        <textarea required="" placeholder="Message" maxlength="5000" id="field" name="field" class="contact-message-field c-input"></textarea>
+                      </div>
+                    </div>
+                  </form>
+                  <div class="success-message c-form-done">
+                    <div class="text-regular body-color">Thank you! Your submission has been received!</div>
+                  </div>
+                  <div class="error-message c-form-fail">
+                    <div class="text-regular body-color">Oops! Something went wrong while submitting the form.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

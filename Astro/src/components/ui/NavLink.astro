@@ -1,0 +1,16 @@
+---
+interface Props {
+  href: string;
+  label: string;
+}
+
+const { href, label } = Astro.props;
+const normalize = (path: string) => (path.length > 1 ? path.replace(/\/$/, '') : path);
+const isCurrent = normalize(Astro.url.pathname) === normalize(href);
+---
+<a href={href} aria-current={isCurrent ? 'page' : undefined} class:list={['button-link', 'c-inline-block', { 'is-current': isCurrent }]}>
+  <div class="footer-menu-text-block">
+    <div class="text-regular eriblack-medium">{label}</div>
+  </div>
+  <div class="footer-menu-fill"></div>
+</a>

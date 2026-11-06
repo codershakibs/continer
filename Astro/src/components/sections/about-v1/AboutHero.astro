@@ -1,0 +1,30 @@
+---
+import PrimaryButton from '@/components/ui/PrimaryButton.astro';
+import SecondaryButton from '@/components/ui/SecondaryButton.astro';
+import SectionTag from '@/components/ui/SectionTag.astro';
+---
+<section class="section">
+  <div class="container c-container">
+    <div>
+      <div class="about-content-flex">
+        <div class="about-left">
+          <div class="section-heading left">
+            <SectionTag data-anim="About.Tag" label-class="body-text capital-medium">WHO WE ARE</SectionTag>
+            <div class="section-title-block">
+              <h1 class="section-title" data-anim="About.Title">Architecting modern supply chain technology</h1>
+            </div>
+          </div>
+        </div>
+        <div class="about-right">
+          <div>
+            <p class="text-large smoky-black" data-anim="About.Text">Continer was built to bridge the gap between complex multi-modal freight networks and intuitive software design. We empower logistics leaders, fleet operators, and dispatch teams to control operations with absolute clarity.</p>
+          </div>
+          <div class="about-button-group" data-anim="About.Button">
+            <PrimaryButton href="/contact-v1">Get Started</PrimaryButton>
+            <SecondaryButton href="/services" variant="font-600">Explore Services</SecondaryButton>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

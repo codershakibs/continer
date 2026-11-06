@@ -1,0 +1,27 @@
+---
+import BackgroundVideo from '@/components/ui/BackgroundVideo.astro';
+import PrimaryButton from '@/components/ui/PrimaryButton.astro';
+import SectionSubHeading from '@/components/ui/SectionSubHeading.astro';
+---
+<section class="section">
+  <div class="container c-container">
+    <div>
+      <div class="about-sub-heading">
+        <SectionSubHeading variant="left" tag="WHO WE ARE" title="Bridging the gap between fragmented freight networks and total control." />
+      </div>
+      <div class="about-content-flex top">
+        <div class="about-video-block" data-anim="Card.Animation">
+          <BackgroundVideo name="19694224-uhd-3840-2160-24fps-1-2-1" class="about-video" control></BackgroundVideo>
+        </div>
+        <div class="about-right _02">
+          <div>
+            <p class="text-large smoky-black" data-anim="Loading.Text">We empower logistics enterprises, fleet operators, and supply chain managers to eliminate blind spots across every transit lane. By unifying live telemetry, automated carrier routing, and predictive analytics into a single intelligent interface, Continer transforms complex international trade into a seamless, high-velocity operation. Our platform is engineered to remove operational friction, cut unnecessary transit delays, and give your entire supply chain team the absolute clarity needed to make fast, profitable decisions in real time.</p>
+          </div>
+          <div class="about-button-group" data-anim="Sub.Tag">
+            <PrimaryButton href="/case-study">Explore Cases</PrimaryButton>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

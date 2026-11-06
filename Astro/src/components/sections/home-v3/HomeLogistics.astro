@@ -1,0 +1,49 @@
+---
+import Img from '@/components/ui/Img.astro';
+import PrimaryButton from '@/components/ui/PrimaryButton.astro';
+import SectionSubHeading from '@/components/ui/SectionSubHeading.astro';
+import { homeLogisticsBodyTextItems } from '@/data/sections/home-v3';
+---
+<section class="section">
+  <div class="container c-container">
+    <div>
+      <div class="logistics-grid">
+        <div class="logistics-video-block" data-anim="Card.Animation">
+          <Img src="/images/Logistics-Image.webp" alt="Logistics team at work" class="logistics-image" widths={[500, 800, 947]} sizes="100vw" />
+          <div class="logistics-absolute">
+            <div class="logistics-card" data-anim="items">
+              <div class="logistics-card-top">
+                <div class="logistics-tag">
+                  <div class="logistics-fil"></div>
+                  <div class="text-mini gesist-mono-rgb">CLIENT STORY</div>
+                </div>
+                <div class="text-regular body-color">PortFlow streamlined our global container tracking and cut supply chain bottlenecks by 45%</div>
+              </div>
+              <div class="logistics-card-bottom">
+                <div class="logistics-card-left">
+                  {homeLogisticsBodyTextItems.map((item) => (
+                    <div class={item.classes}>{item.text}</div>
+                  ))}
+                </div>
+                <div class="logistics-card-right">
+                  <Img src="/images/Logistics-Author.webp" alt="Customer portrait" class="logistics-short-image" loading="eager" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="logistics-content">
+          <div class="logistics-item">
+            <SectionSubHeading variant="left" tag="LOGISTICS OPERATING SYSTEM" title="A framework designed around automated freight visibility" />
+            <div>
+              <p class="text-regular" data-anim="Loading.Text">With real-time telemetry, instant container tracking, and flexible route variables, you can orchestrate supply chains that run with absolute precision. Every module — from carrier dispatch to live transit data — is built to give your logistics network scalable momentum.</p>
+            </div>
+            <div class="about-button-group" data-anim="Sub.Tag">
+              <PrimaryButton href="/about-v1">More Abou Us</PrimaryButton>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

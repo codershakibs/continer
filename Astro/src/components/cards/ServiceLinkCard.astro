@@ -1,0 +1,16 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import ArrowIcon from '@/assets/icons/cargo-arrow-icon.svg';
+
+interface Props {
+  service: CollectionEntry<'services'>;
+}
+
+const { service } = Astro.props;
+---
+<a aria-label={service.data.title} href={`/service/${service.id}`} class="cargo-block c-inline-block">
+  <div class="cargo-content-flex">
+    <ArrowIcon class="red-aro" />
+    <div class="text-m white-rgb">{service.data.title}</div>
+  </div>
+</a>

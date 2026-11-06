@@ -1,0 +1,47 @@
+---
+import Img from '@/components/ui/Img.astro';
+import PrimaryButton from '@/components/ui/PrimaryButton.astro';
+import SectionSubHeading from '@/components/ui/SectionSubHeading.astro';
+import { aboutTeamTeamCardItems } from '@/data/sections/about-v1';
+---
+<section class="section night-color">
+  <div class="container c-container">
+    <div>
+      <div class="team-flex">
+        <div class="team-left">
+          <div class="team-heading-block">
+            <SectionSubHeading variant="white-left" tag-class="body-text capital-medium v-subheading-white-left" tag="TEAM" title-class="heading v-subheading-white-left" title="The experts behind your supply chain" />
+            <div>
+              <p class="text-regular isabelline-color" data-anim="Loading.Text">A dedicated group of operations directors, fleet logistics managers, and supply chain infrastructure engineers.</p>
+            </div>
+            <div class="team-button-group" data-anim="Sub.Tag">
+              <PrimaryButton href="/contact-v1" variant="white-version">Join Our Team</PrimaryButton>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="team-grid" data-anim="items">
+            {aboutTeamTeamCardItems.map((item) => (
+              <div class="team-card">
+                <div class="team-item">
+                  <div class="team-imge-block">
+                    <Img src={item.image} alt="Team member portrait" class="tam-image" loading="eager" widths={[500, 785]} sizes="100vw" />
+                    <div class="overlay-grid">
+                      {Array.from({ length: 8 }).map(() => (
+                        <div class="col"></div>
+                      ))}
+                    </div>
+                  </div>
+                  <div class="team-card-info">
+                    <div class="text-extra-large white">{item.text}</div>
+                    <div class="body-text isabelline-color">{item.text2}</div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

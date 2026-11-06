@@ -1,0 +1,42 @@
+---
+import SectionSubHeading from '@/components/ui/SectionSubHeading.astro';
+import { aboutAwardsAwarFilItems, aboutAwardsAwardFilBgItems, aboutAwardsAwardCardItems } from '@/data/sections/about-v2';
+---
+<section class="section isabelline-color">
+  <div class="container c-container">
+    <div>
+      <div class="award-section-flex">
+        <div>
+          <div class="award-heading">
+            <SectionSubHeading variant="left" tag="WHO WE ARE" title="The strategists behind your acceleration." />
+            <p class="text-regular slate-gray">A dedicated council of former venture capitalist partners, operational growth leaders, and enterprise scaling coaches.</p>
+          </div>
+        </div>
+        <div class="award-right">
+          <div class="award-fil-wrap">
+            <div class="awar-fil-block">
+              {aboutAwardsAwarFilItems.map((item) => (
+                <div class={item}></div>
+              ))}
+            </div>
+            <div class="award-fil-absolute">
+              <div class="award-fil-item-block">
+                {aboutAwardsAwardFilBgItems.map((row) => (
+                  <row.icon class={row.classes} />
+                ))}
+              </div>
+            </div>
+          </div>
+          <div class="award-card-flex">
+            {aboutAwardsAwardCardItems.map((cell) => (
+              <div class="award-card">
+                <div class="text-s dark-color">{cell.text}</div>
+                <div class="text-normal">{cell.text2}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

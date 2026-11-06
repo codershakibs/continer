@@ -1,0 +1,59 @@
+{
+  "main": [
+    { "label": "Home", "href": "/" },
+    { "label": "Pages", "dropdown": true },
+    { "label": "About", "href": "/about-v1" },
+    { "label": "Service", "href": "/services" },
+    { "label": "Blog", "href": "/blog" },
+    { "label": "Contact", "href": "/contact-v1" }
+  ],
+  "columns": [
+    {
+      "title": "Pages",
+      "links": [
+        { "label": "Home A", "href": "/" },
+        { "label": "Home B", "href": "/home-v2" },
+        { "label": "Home C", "href": "/home-v3" },
+        { "label": "About A", "href": "/about-v1" },
+        { "label": "About B", "href": "/about-v2" },
+        { "label": "About C", "href": "/about-v3" }
+      ]
+    },
+    {
+      "title": "Pages",
+      "links": [
+        { "label": "Blog", "href": "/blog" },
+        { "label": "Blog Article", "href": "/blog-posts/building-resilient-freight-networks-for-volatile-global-markets" },
+        { "label": "Career", "href": "/career" },
+        { "label": "Career Details", "href": "/career/global-fleet-dispatch-manager" },
+        { "label": "Case Study", "href": "/case-study" },
+        { "label": "Case Study Single", "href": "/case-study/supporting-rapid-warehouse-expansion-through-unified-tracking" }
+      ]
+    },
+    {
+      "title": "Pages",
+      "links": [
+        { "label": "Contact A", "href": "/contact-v1" },
+        { "label": "Contact B", "href": "/contact-v2" },
+        { "label": "Contact C", "href": "/contact-v3" },
+        { "label": "Faq", "href": "/faq" },
+        { "label": "Service", "href": "/services" },
+        { "label": "Service Single", "href": "/service/fleet-dispatch" }
+      ]
+    },
+    {
+      "title": "Pages",
+      "links": [
+        { "label": "Privacy Policy", "href": "/policy" },
+        { "label": "404", "href": "/404" },
+        { "label": "Password", "href": "/401" },
+        { "label": "Style Guide", "href": "/style-guide" }
+      ]
+    }
+  ],
+  "buttons": [
+    { "label": "All Pages", "href": "/style-guide", "variant": "red-version" },
+    { "label": "Get In Touch", "href": "/contact-v1", "variant": "transparent" }
+  ],
+  "cta": { "label": "Work With Us", "href": "/contact-v1" }
+}

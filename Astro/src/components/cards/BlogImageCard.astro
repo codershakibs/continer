@@ -1,0 +1,13 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { Image } from 'astro:assets';
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+}
+
+const { post } = Astro.props;
+---
+<a href={`/blog-posts/${post.id}`} class="blog-image-block c-inline-block" aria-label={post.data.title}>
+  <Image src={post.data.homeImage} alt={post.data.title} widths={[500, 800, 1200]} sizes="(max-width: 767px) 100vw, 50vw" class="blog-image" />
+</a>

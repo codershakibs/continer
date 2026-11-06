@@ -1,0 +1,83 @@
+---
+import NavLink from '@/components/ui/NavLink.astro';
+import FacebookIcon from '@/assets/icons/social-facebook-icon.svg';
+import XIcon from '@/assets/icons/social-x-icon.svg';
+import LinkedinIcon from '@/assets/icons/social-linkedin-icon.svg';
+import ThreadsIcon from '@/assets/icons/social-threads-icon.svg';
+import config from '@/config/config.json';
+import menu from '@/config/menu.json';
+import social from '@/config/social.json';
+
+const icons = { facebook: FacebookIcon, x: XIcon, linkedin: LinkedinIcon, threads: ThreadsIcon } as const;
+const copyright = config.footer.copyright.replace('{year}', String(new Date().getFullYear()));
+---
+<section class="section padding-xs">
+  <div class="container c-container">
+    <div class="footer-content-wrapper">
+      <div class="footer-top-section">
+        <div class="footer-left">
+          <div class="footer-heading-block">
+            <div data-anim="Sub.Title" class="text-m">{config.footer.newsletterTitle}</div>
+            <div class="footer-short-text">
+              <div data-anim="Loading.Text" class="text-regular">{config.footer.newsletterText}</div>
+            </div>
+          </div>
+        </div>
+        <div class="footer-right">
+          <div class="footer-form-block c-form" data-form>
+            <form method="post" id="newsletter-form" data-anim="items" class="footer-form">
+              <div class="footer-form-toggle-block">
+                <div class="footer-short-text"><label for="news-email" class="text-small">SUBSCRIBE FOR OUR NEWSLETTER</label></div>
+                <div class="footer-field-wrap">
+                  <input class="footer-toggle-field c-input" maxlength="256" name="email" placeholder="Enter your mail" type="email" id="news-email" required />
+                  <div class="footer-toggle-icon-block"><input type="submit" aria-label="Subscribe" class="submit-button c-button" value="" /></div>
+                </div>
+              </div>
+            </form>
+            <div class="success c-form-done">
+              <div class="text-regular white">Thank you! Your submission has been received!</div>
+            </div>
+            <div class="error c-form-fail">
+              <div class="text-regular white">Oops! Something went wrong while submitting the form.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-fil"></div>
+      <div class="footer-center-wrap">
+        <div data-anim="Card.Animation" class="footer-social-media-wrap">
+          <div class="footer-social-media-flex">
+            <a href="/" class="footer-logo-block c-inline-block" aria-label={`${config.site.name} home`}><img loading="lazy" src={config.site.logo} alt={config.site.name} class="footer-logo" /></a>
+            <div class="footer-social-media-bottom">
+              {social.map((item) => {
+                const Icon = icons[item.icon as keyof typeof icons];
+                return (
+                  <a href={item.href} target="_blank" rel="noopener noreferrer" aria-label={item.name} class="footer-media-link c-inline-block">
+                    <Icon class="footer-media-icon" />
+                  </a>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+        <div data-anim="items" class="footer-menu-wrap">
+          {menu.columns.map((column) => (
+            <div class="footer-card">
+              <div class="footer-menu-text">{column.title}</div>
+              <div class="footer-menu-block">
+                {column.links.map((link) => <NavLink {...link} />)}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div class="footer-fil"></div>
+      <div class="footer-bottom">
+        <div class="footer-copyright-block">
+          <div class="text-small eerie-black">{copyright}</div>
+          <div class="text-small charcoal-color">{config.footer.credit}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

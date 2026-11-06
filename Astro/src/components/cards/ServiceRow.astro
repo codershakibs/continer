@@ -1,0 +1,52 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { Image } from 'astro:assets';
+import PrimaryButton from '@/components/ui/PrimaryButton.astro';
+
+interface Props {
+  service: CollectionEntry<'services'>;
+  /** The template links the image on odd rows only. */
+  linked?: boolean;
+}
+
+const { service, linked = true } = Astro.props;
+const href = `/service/${service.id}`;
+---
+<div class="service-container">
+  <div class="servcide-grid">
+    <div class="service-inner-card">
+      <div class="text-regular red-medium">{service.data.number}</div>
+    </div>
+    <div class="service-inner-card border">
+      {linked ? (
+        <a href={href} class="service-card-image-block c-inline-block" aria-label={service.data.title}>
+          <Image src={service.data.image} alt={service.data.title} widths={[400, 700, 1000]} sizes="(max-width: 767px) 100vw, 33vw" class="service-card-image" />
+        </a>
+      ) : (
+        <div class="service-card-image-block">
+          <Image src={service.data.image} alt={service.data.title} widths={[400, 700, 1000]} sizes="(max-width: 767px) 100vw, 33vw" class="service-card-image" />
+        </div>
+      )}
+    </div>
+    <div class="service-inner-card">
+      <div class="service-items">
+        <div class="service-card-top">
+          <div class="exprience-card-icon-block">
+            <Image src={service.data.icon} alt="" class="servicer-icon" />
+          </div>
+          <div class="exprience-card-title-block">
+            <div class="text-xs">{service.data.title}</div>
+          </div>
+        </div>
+        <div class="service-card-bottom">
+          <div class="exprience-card-text-block">
+            <div class="body-text white">{service.data.excerpt}</div>
+          </div>
+          <div class="service-button-wrap">
+            <PrimaryButton href={href} class="white-text-and-border" aria-label={`See details: ${service.data.title}`}>See Details</PrimaryButton>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

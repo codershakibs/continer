@@ -1,0 +1,42 @@
+---
+import BackgroundVideo from '@/components/ui/BackgroundVideo.astro';
+import Img from '@/components/ui/Img.astro';
+import SectionTag from '@/components/ui/SectionTag.astro';
+import { contactMainContactCardItems } from '@/data/sections/contact-v3';
+---
+<section class="section">
+  <div class="container c-container">
+    <div>
+      <div class="contact-top max-width">
+        <div class="section-heading">
+          <SectionTag data-anim="Contact.Tag" label-class="body-text capital-medium">GET IN TOUCH</SectionTag>
+          <div class="section-title-block">
+            <h1 class="section-title" data-anim="Contact.Title">Let’s connect your supply chain</h1>
+          </div>
+        </div>
+      </div>
+      <div class="contact-section-grid">
+        {contactMainContactCardItems.map((item) => (
+          <div class="contact-card v3" data-anim={item.anim}>
+            <div class="contact-card-items">
+              <div>
+                <div>
+                  <Img src={item.image} alt="" class="contact-icon" loading="eager" />
+                </div>
+              </div>
+              <div class="contact-card-bottom">
+                <div class="text-regular charcoal-opacity">{item.text}</div>
+                <a href={item.href} class="contact-mail" target={item.target}>{item.text2}</a>
+              </div>
+            </div>
+          </div>
+        ))}
+        <div class="contact-card" data-anim="Contact.Toggle1">
+          <div class="contact-card-video-block">
+            <BackgroundVideo name="13076316-1280-720-60fps-1" class="contact-body-video" control></BackgroundVideo>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

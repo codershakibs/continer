@@ -1,0 +1,38 @@
+---
+import SectionSubHeading from '@/components/ui/SectionSubHeading.astro';
+import ServiceRow from '@/components/cards/ServiceRow.astro';
+import { getServices } from '@/lib/content';
+
+const services = await getServices();
+---
+<section class="section padding-l night-color">
+  <div class="container c-container">
+    <div>
+      <div class="service-top">
+        <SectionSubHeading variant="white-left" tag-class="body-text capital-medium v-subheading-white-left" tag="CORE SERVICES" title-class="heading v-subheading-white-left" title="Comprehensive Logistics Solutions Tailored for Enterprise Scale" />
+      </div>
+    </div>
+  </div>
+  <div class="service-content-wrap">
+    <div data-anim="Card.Animation">
+      <div role="list" class="service-card">
+        <div role="listitem"><ServiceRow service={services[0]} /></div>
+      </div>
+    </div>
+    <div data-anim="Card.Animation">
+      <div role="list" class="service-card">
+        <div role="listitem"><ServiceRow service={services[1]} linked={false} /></div>
+      </div>
+    </div>
+    <div data-anim="Card.Animation">
+      <div role="list" class="service-card">
+        <div role="listitem"><ServiceRow service={services[2]} linked={false} /></div>
+      </div>
+    </div>
+    <div data-anim="Card.Animation">
+      <div role="list" class="service-card">
+        <div role="listitem"><ServiceRow service={services[3]} /></div>
+      </div>
+    </div>
+  </div>
+</section>

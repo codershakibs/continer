@@ -1,0 +1,34 @@
+---
+import Img from '@/components/ui/Img.astro';
+import SectionSubHeading from '@/components/ui/SectionSubHeading.astro';
+import { aboutTeamTeamCardItems } from '@/data/sections/about-v3';
+---
+<section class="section baby-powder">
+  <div class="container c-container">
+    <div>
+      <div class="team-section-heading">
+        <SectionSubHeading tag="TEAM" title="The experts behind your supply chain" />
+      </div>
+      <div class="team-grid-col-3" data-anim="items">
+        {aboutTeamTeamCardItems.map((item) => (
+          <div class={item.classes}>
+            <div class="team-item">
+              <div class="team-imge-block">
+                <Img src={item.image} alt="Team member portrait" class="tam-image" loading="eager" widths={item.widths} sizes="100vw" />
+                <div class="overlay-grid">
+                  {Array.from({ length: 8 }).map(() => (
+                    <div class="col"></div>
+                  ))}
+                </div>
+              </div>
+              <div class="team-card-info">
+                <div class="text-extra-large">{item.text}</div>
+                <div class="text-small gesist-mono">{item.text2}</div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

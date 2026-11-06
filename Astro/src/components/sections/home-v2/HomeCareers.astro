@@ -1,0 +1,68 @@
+---
+import DarkButton from '@/components/ui/DarkButton.astro';
+import SectionTag from '@/components/ui/SectionTag.astro';
+import CareerRow from '@/components/cards/CareerRow.astro';
+import { getCareers } from '@/lib/content';
+
+const careers = await getCareers();
+---
+<section class="section night-color padding-l">
+  <div class="container c-container">
+    <div class="career-content-wraaper">
+      <div class="careeer-heading-block">
+        <div class="section-sub-heading">
+          <SectionTag data-anim="Sub.Tag" label-class="body-text capital-medium white">EXPLORE OPPORTUNITIES</SectionTag>
+          <div>
+            <h2 class="heading white" data-anim="Sub.Title">Join our global logistics network</h2>
+          </div>
+        </div>
+      </div>
+      <div class="career-content-flex" data-anim="items">
+        <div>
+          <div role="list">
+            <div role="listitem"><CareerRow career={careers[0]} /></div>
+          </div>
+        </div>
+        <div class="career-fil"></div>
+        <div>
+          <div role="list">
+            <div role="listitem"><CareerRow career={careers[1]} /></div>
+          </div>
+        </div>
+        <div class="career-fil"></div>
+        <div>
+          <div role="list">
+            <div role="listitem"><CareerRow career={careers[2]} /></div>
+          </div>
+        </div>
+        <div class="career-fil"></div>
+        <div>
+          <div role="list">
+            <div role="listitem"><CareerRow career={careers[3]} /></div>
+          </div>
+        </div>
+        <div class="career-fil"></div>
+        <div>
+          <div role="list">
+            <div role="listitem"><CareerRow career={careers[4]} /></div>
+          </div>
+        </div>
+        <div class="career-fil"></div>
+        <div>
+          <div role="list">
+            <div role="listitem"><CareerRow career={careers[5]} /></div>
+          </div>
+        </div>
+        <div class="career-fil"></div>
+        <div>
+          <div role="list">
+            <div role="listitem"><CareerRow career={careers[6]} /></div>
+          </div>
+        </div>
+      </div>
+      <div class="career-button-block" data-anim="Card.Animation">
+        <DarkButton href="/contact-v1" variant="white" icon="/images/White-Svg.svg">Send us your general application</DarkButton>
+      </div>
+    </div>
+  </div>
+</section>

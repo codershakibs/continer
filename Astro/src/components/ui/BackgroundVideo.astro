@@ -1,0 +1,28 @@
+---
+interface Props {
+  /** File stem in `public/videos`: expects `<name>.mp4`, `<name>.webm` and `<name>-poster.jpg`. */
+  name: string;
+  class?: string;
+  /** Show the play/pause control. Pass a string to add positioning classes to it. */
+  control?: boolean | string;
+  [key: `data-${string}`]: unknown;
+}
+
+const { name, class: className, control, ...rest } = Astro.props;
+const controlClass = typeof control === 'string' ? control : undefined;
+---
+<div class:list={[className, 'c-background-video', 'c-background-video-atom']} data-video {...rest}>
+  <video autoplay loop muted playsinline preload="metadata" poster={`/videos/${name}-poster.jpg`} data-object-fit="cover" aria-hidden="true">
+    <source src={`/videos/${name}.mp4`} type="video/mp4" />
+    <source src={`/videos/${name}.webm`} type="video/webm" />
+  </video>
+  <slot />
+  {control && (
+    <div aria-live="polite">
+      <button type="button" data-video-toggle class:list={['c-backgroundvideo-backgroundvideoplaypausebutton', 'play-pause', controlClass, 'c-background-video--control']} aria-label="Pause video">
+        <span data-video-icon="pause"><img src="/images/Pause.svg" loading="lazy" alt="" /></span>
+        <span data-video-icon="play" hidden><img src="/images/Play.svg" loading="lazy" alt="" /></span>
+      </button>
+    </div>
+  )}
+</div>

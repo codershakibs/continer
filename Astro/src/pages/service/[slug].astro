@@ -1,0 +1,71 @@
+---
+import type { GetStaticPaths } from 'astro';
+import type { CollectionEntry } from 'astro:content';
+import { Image } from 'astro:assets';
+import Base from '@/layouts/Base.astro';
+import SectionTag from '@/components/ui/SectionTag.astro';
+import PrimaryButton from '@/components/ui/PrimaryButton.astro';
+import Cta from '@/components/sections/shared/Cta.astro';
+import { getServices, renderParts } from '@/lib/content';
+
+export const getStaticPaths = (async () =>
+  (await getServices()).map((service) => ({ params: { slug: service.id }, props: { service } }))) satisfies GetStaticPaths;
+
+const { service } = Astro.props as { service: CollectionEntry<'services'> };
+const { data } = service;
+const [intro, outro] = renderParts(service);
+---
+
+<Base title={`${data.title} - Continer Logistics Astro Theme`} description={data.metaDescription} darkHeader>
+  <section class="section night-color top-l-bottom-m">
+    <div class="container c-container">
+      <div class="service-single-content-wrappr">
+        <div class="service-single-top-section">
+          <div class="service-single-left">
+            <div class="section-heading left">
+              <SectionTag data-anim="Contact.Tag" label-class="body-text capital-medium white">{data.tag}</SectionTag>
+              <div class="section-title-block">
+                <h1 data-anim="Contact.Title" class="section-title white">{data.title}</h1>
+              </div>
+            </div>
+          </div>
+          <div class="service-single-right">
+            <div class="section-text-wrap">
+              <p data-anim="Contact.Text" class="text-regular body-color">{data.excerpt}</p>
+            </div>
+            <div data-anim="Contact.Card01" class="service-single-button-group">
+              <PrimaryButton href="/contact-v1" variant="red-version">Book a Consultation</PrimaryButton>
+              <PrimaryButton href="/case-study" variant="white-text-and-border">Explore Case Study</PrimaryButton>
+            </div>
+          </div>
+        </div>
+        <div class="service-single-image-block">
+          <Image src={data.singleImage} alt={data.title} loading="eager" widths={[800, 1200, 1600]} sizes="100vw" data-anim="Contact.Video" class="service-single-image" />
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container c-container">
+      <div class="service-single-content-wrappr">
+        <div class="service-single-content-wrap">
+          <div data-anim="Card.Animation" class="service-single-details-wrap">
+            <div class="service-details-block c-richtext" set:html={intro} />
+          </div>
+          <div data-anim="Card.Animation" class="service-single-details-wrap gap">
+            <div class="service-single-details-image-block">
+              <Image src={data.detailsImage} alt={data.highlight} widths={[800, 1200]} sizes="(max-width: 991px) 100vw, 70vw" class="service-single-details-image" />
+            </div>
+            <div class="service-single-details-short">
+              <div class="text-small dark-color">{data.highlight}</div>
+            </div>
+          </div>
+          <div data-anim="Card.Animation" class="service-single-details-wrap">
+            <div class="service-details-block c-richtext" set:html={outro} />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <Cta />
+</Base>

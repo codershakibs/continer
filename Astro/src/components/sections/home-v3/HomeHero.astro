@@ -1,0 +1,30 @@
+---
+import Img from '@/components/ui/Img.astro';
+import PrimaryButton from '@/components/ui/PrimaryButton.astro';
+import SecondaryButton from '@/components/ui/SecondaryButton.astro';
+import SectionTag from '@/components/ui/SectionTag.astro';
+---
+<section class="section padding-xs black-bg">
+  <Img src="/images/Home-3.webp" alt="Global logistics operations" class="home-three-image" loading="eager" widths={[500, 800, 1080, 1440]} sizes="100vw" />
+  <div class="home-three-absolute">
+    <div class="container c-container">
+      <div class="home-content-wrapper home-three">
+        <div class="home-heading-block">
+          <div class="section-heading right">
+            <SectionTag data-anim="Home.Tag" label-class="body-text capital-medium white">EXPLORE LOGISTICS SYSTEM</SectionTag>
+            <div class="section-title-block">
+              <h1 class="section-title white" data-anim="Home.Title">Digital infrastructure for global trade</h1>
+            </div>
+            <div class="section-text-block">
+              <p class="text-regular body-color" data-anim="Home.Text">Trusted by industry-leading operators, multimodal carriers, and enterprise logistics networks worldwide.</p>
+            </div>
+          </div>
+          <div class="home-button-group" data-anim="Home.Button">
+            <PrimaryButton href="/contact-v1" variant="white-version">Get Started</PrimaryButton>
+            <SecondaryButton href="/services" variant="font-white-600">Explore Services</SecondaryButton>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

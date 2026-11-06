@@ -1,0 +1,36 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import PrimaryButton from '@/components/ui/PrimaryButton.astro';
+import { formatDate } from '@/lib/content';
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+  anim?: string;
+  buttonClass?: string;
+}
+
+const { post, anim, buttonClass } = Astro.props;
+---
+<div class="blog-active-content-block" data-anim={anim}>
+  <div class="blog-item">
+    <div class="blog-active-card-top">
+      <div class="blog-tag-flex">
+        <div class="body-text font-medium-upper">{post.data.tag}</div>
+        <div class="blog-fil"></div>
+        <div class="body-text font-medium-upper">{formatDate(post.data.date)}</div>
+      </div>
+      <div class="blog-active-heading-block">
+        <div class="text-m">{post.data.title}</div>
+      </div>
+      <div class="blog-active-summary">
+        <p class="text-regular">{post.data.excerpt}</p>
+      </div>
+    </div>
+    <div class="blog-active-card-bottom">
+      <div class:list={['blog-active-button-block', buttonClass]}>
+        <PrimaryButton href={`/blog-posts/${post.id}`} aria-label={`Read article: ${post.data.title}`}>Read article</PrimaryButton>
+      </div>
+      <div class="text-small gesist-mono">{post.data.byline}</div>
+    </div>
+  </div>
+</div>

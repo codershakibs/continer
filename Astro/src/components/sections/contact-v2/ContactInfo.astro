@@ -1,0 +1,43 @@
+---
+import { contactInfoContactMediaCardItems } from '@/data/sections/contact-v2';
+---
+<section class="section night-color padding-top-m-bottom-l">
+  <div class="container c-container">
+    <div>
+      <div>
+        <div class="contact-media-flex">
+          <div class="contact-media-card">
+            <div class="contact-flex">
+              <div class="cotact-fil-block">
+                <div class="cotact-fil"></div>
+              </div>
+              <div class="contact-fil-text">PHONE</div>
+              <div class="cotact-fil-block">
+                <div class="cotact-fil"></div>
+              </div>
+            </div>
+            <div class="contact-link-wrap">
+              <a href="tel:+18884398324" class="contact-link top c-inline-block">
+                <h2 class="contact-phone">+1 888 439 8324</h2>
+              </a>
+            </div>
+          </div>
+          {contactInfoContactMediaCardItems.map((item) => (
+            <div class="contact-media-card">
+              <div class="contact-flex">
+                <div class="cotact-fil-block">
+                  <div class="cotact-fil"></div>
+                </div>
+                <div class="contact-fil-text">{item.text}</div>
+                <div class="cotact-fil-block">
+                  <div class="cotact-fil"></div>
+                </div>
+              </div>
+              <div class="contact-link-wrap"><a href={item.href} class="contact-link" target={item.target}>{item.text2}</a></div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

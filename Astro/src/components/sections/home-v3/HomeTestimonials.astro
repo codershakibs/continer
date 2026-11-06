@@ -1,0 +1,63 @@
+---
+import Img from '@/components/ui/Img.astro';
+import RollButton from '@/components/ui/RollButton.astro';
+import SectionSubHeading from '@/components/ui/SectionSubHeading.astro';
+import ChainImageContentIcon from '@/assets/icons/chain-image-content-icon.svg';
+import TestimonialLeftArrowIcon from '@/assets/icons/testimonial-left-arrow-icon.svg';
+import TestimonialRightArrowIcon from '@/assets/icons/testimonial-right-arrow-icon.svg';
+import { homeTestimonialsChainSideItems } from '@/data/sections/home-v3';
+---
+<section class="section isabelline-color">
+  <div class="container c-container">
+    <div class="testimonial-content-wrapper">
+      <div class="testimonil-top">
+        <SectionSubHeading tag="testimonials" title="Trusted by supply chain leaders" />
+      </div>
+      <div data-anim="Card.Animation">
+        <div data-delay="4000" data-animation="slide" data-autoplay="false" data-duration="500" class="testimonial c-slider">
+          <div class="trust-mask c-slider-mask">
+            {homeTestimonialsChainSideItems.map((item) => (
+              <div class="chain-side c-slide">
+                <div class="chain-content-wrap">
+                  <div class="chain-image-block">
+                    <Img src={item.image} alt="Supply chain operations" class="chain-image" loading="eager" widths={[500, 800, 1080, 1568]} sizes="100vw" />
+                    <div class="chain-absolulte">
+                      <div class="chain-image-content">
+                        <div class="body-text red-color">87%</div>
+                        <ChainImageContentIcon class="red-arow" />
+                        <div class="body-text body-color-normal">Reduction in operational risks</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="chain-card">
+                    <div class="chain-card-top">
+                      <Img src={item.image2} alt={item.alt} class={item.classes} />
+                      <div class="text-large white-normal">{item.text}</div>
+                    </div>
+                    <div class="chain-card-bottom">
+                      <div>
+                        <RollButton href="/contact-v1" icon="/images/Frame-6.svg">Schedule pickup</RollButton>
+                      </div>
+                      <div class="dispatch-author-info-block">
+                        {item.bodyTextList.map((row) => (
+                          <div class={row.classes}>{row.text}</div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div class="testimonial-left-arrow c-slider-arrow-left">
+            <TestimonialLeftArrowIcon class="testimonial-logo" />
+          </div>
+          <div class="testimonial-right-arrow c-slider-arrow-right">
+            <TestimonialRightArrowIcon class="testimonial-logo" />
+          </div>
+          <div class="side-nav c-slider-nav c-round c-num"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

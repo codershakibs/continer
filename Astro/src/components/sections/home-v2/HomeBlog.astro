@@ -1,0 +1,53 @@
+---
+import DarkButton from '@/components/ui/DarkButton.astro';
+import SectionSubHeading from '@/components/ui/SectionSubHeading.astro';
+import BlogCard from '@/components/cards/BlogCard.astro';
+import BlogImageCard from '@/components/cards/BlogImageCard.astro';
+import { getStandardPosts } from '@/lib/content';
+
+const posts = await getStandardPosts();
+---
+<section class="section padding-top-m-bottom-x">
+  <div class="container c-container">
+    <div>
+      <div class="blog-top-section">
+        <div>
+          <SectionSubHeading variant="left" tag="LATEST INSIGHTS" title="Industry Perspectives" />
+        </div>
+        <div data-anim="Sub.Tag">
+          <DarkButton href="/blog" icon="/images/Dark-Aro.svg">Visit journal</DarkButton>
+        </div>
+      </div>
+      <div class="blog-section-grid" data-anim="items">
+        <div>
+          <div class="blog-collection">
+            <div role="list" class="blog-grid-col-2 home">
+              <div role="listitem" class="blog-items"><BlogImageCard post={posts[0]} /></div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div>
+            <div role="list" class="blog-grid-col-2 home">
+              <div role="listitem" class="blog-items"><BlogCard post={posts[0]} buttonClass="last" /></div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div>
+            <div role="list" class="blog-grid-col-2 home">
+              <div role="listitem" class="blog-items"><BlogCard post={posts[1]} buttonClass="last" /></div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div>
+            <div role="list" class="blog-grid-col-2 home">
+              <div role="listitem" class="blog-items"><BlogCard post={posts[3]} buttonClass="last" /></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

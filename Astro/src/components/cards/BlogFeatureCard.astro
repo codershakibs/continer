@@ -1,0 +1,43 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { Image } from 'astro:assets';
+import PrimaryButton from '@/components/ui/PrimaryButton.astro';
+import { formatDate } from '@/lib/content';
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+  anim?: string;
+  cellClass?: string;
+}
+
+const { post, anim, cellClass } = Astro.props;
+const href = `/blog-posts/${post.id}`;
+---
+<div class="blog-grid" data-anim={anim}>
+  <a href={href} class="blog-active-image-block c-inline-block" aria-label={post.data.title}>
+    <Image src={post.data.image} alt={post.data.title} loading="eager" widths={[600, 900, 1200]} sizes="(max-width: 991px) 100vw, 50vw" class="blog-active-image" />
+  </a>
+  <div class:list={['blog-active-content-block', 'first', cellClass]}>
+    <div class="blog-active-item">
+      <div class="blog-active-card-top">
+        <div class="blog-tag-flex">
+          <div class="body-text font-medium-upper">{post.data.tag}</div>
+          <div class="blog-fil"></div>
+          <div class="body-text font-medium-upper">{formatDate(post.data.date)}</div>
+        </div>
+        <div class="blog-active-heading-block">
+          <div class="text-m">{post.data.title}</div>
+        </div>
+        <div class="blog-active-summary">
+          <p class="text-regular">{post.data.excerpt}</p>
+        </div>
+      </div>
+      <div class="blog-active-card-bottom">
+        <div class="blog-active-button-block">
+          <PrimaryButton href={href} aria-label={`Read article: ${post.data.title}`}>Read article</PrimaryButton>
+        </div>
+        <div class="text-small gesist-mono">{post.data.byline}</div>
+      </div>
+    </div>
+  </div>
+</div>

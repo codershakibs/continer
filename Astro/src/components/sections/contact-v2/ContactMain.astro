@@ -1,0 +1,56 @@
+---
+import SectionTag from '@/components/ui/SectionTag.astro';
+import { contactMainContactToggleBlockItems } from '@/data/sections/contact-v2';
+---
+<section class="section night-color padding-top-x-bottm-m">
+  <div class="container c-container">
+    <div>
+      <div class="contact-content-wrapp">
+        <div class="contact-section-top">
+          <div class="section-heading">
+            <SectionTag data-anim="Contact.Tag" label-class="body-text capital-medium white">GET IN TOUCH</SectionTag>
+            <div class="section-title-block">
+              <h1 class="section-title white" data-anim="Contact.Title">Let’s connect your supply chain</h1>
+            </div>
+            <div class="section-text-wrap">
+              <p class="text-regular isabelline-color" data-anim="Contact.Text">Have questions about our freight telemetry, automated dispatching, or enterprise integration? Send us a message and our operations team will respond promptly.</p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="contact-form-wrap c-form" data-form>
+            <form id="email-form" method="post" class="contact-form">
+              <div class="contact-toggle-grid">
+                {contactMainContactToggleBlockItems.map((item) => (
+                  <div class="contact-toggle-block" data-anim={item.anim}>
+                    <label for={item.for} class="contact-form-text white">{item.text}</label>
+                    <input maxlength="256" name={item.name} placeholder={item.placeholder} type={item.type} id={item.id} required="" class="contact-toggle-field c-input" />
+                  </div>
+                ))}
+                <div class="contact-toggle-block cell-12141ca77d129a35495e" data-anim="Contact.Toggle2">
+                  <label for="Message" class="contact-form-text white">Your Message</label>
+                  <textarea required="" placeholder="Tell us about your shipping requirements, fleet size, or integration questions..." maxlength="5000" id="Message" name="Message" class="contact-message-field c-input"></textarea>
+                </div>
+                <div class="cell-4701657093fa9a35495e" data-anim="Contact.Toggle2">
+                  <label class="radition-button-block c-radio">
+                    <input type="radio" id="radio" name="radio" value="Radio" class="radio-button-fil c-radio-input" />
+                    <span class="text-regular white c-form-label">Prefer a quick phone call instead of a message reply?</span>
+                  </label>
+                </div>
+              </div>
+              <div data-anim="Contact.Toggle3">
+                <input type="submit" data-wait="Please wait..." value="Send Message" class="contact-red-and-white-button c-button" />
+              </div>
+            </form>
+            <div class="success-message bg c-form-done">
+              <div class="text-regular body-color">Thank you! Your submission has been received!</div>
+            </div>
+            <div class="error-message c-form-fail">
+              <div class="text-regular body-color">Oops! Something went wrong while submitting the form.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

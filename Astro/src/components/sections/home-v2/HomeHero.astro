@@ -1,0 +1,65 @@
+---
+import BackgroundVideo from '@/components/ui/BackgroundVideo.astro';
+import Img from '@/components/ui/Img.astro';
+import SectionTag from '@/components/ui/SectionTag.astro';
+import { homeHeroHomeCounterItemItems, homeHeroAvaterImageBlockItems } from '@/data/sections/home-v2';
+---
+<section class="section night-color padding-top-x-bottm-m">
+  <div class="container c-container">
+    <div class="home-content-wrapper">
+      <div class="home-grid">
+        <div class="hoome-card">
+          <div class="home-top">
+            <div class="section-heading left">
+              <SectionTag data-anim="Home.Tag-One" label-class="body-text capital-medium white">EXPLORE LOGISTICS SYSTEM</SectionTag>
+              <div class="section-title-block">
+                <h1 class="section-title white" data-anim="Home.Title">Building digital infrastructure for global logistics</h1>
+              </div>
+              <div class="section-text-block">
+                <p class="text-regular isabelline-color" data-anim="Home.Text">Trusted by industry-leading operators, multimodal carriers, and enterprise logistics networks worldwide.</p>
+              </div>
+            </div>
+            <div class="home-counter-block">
+              {homeHeroHomeCounterItemItems.map((item) => (
+                <div class="home-counter-item" data-anim={item.anim}>
+                  <div class="counter-number-block">
+                    <div class="counter-number-col-wrap">
+                      {item.counterNumberColList.map((row) => (
+                        <div class="counter-number-col">
+                          <div class={row.classes}>
+                            {row.textLBlackList.map((cell) => (
+                              <div class="text-l-black white">{cell}</div>
+                            ))}
+                          </div>
+                        </div>
+                      ))}
+                      <div class="text-l-black white">{item.text}</div>
+                    </div>
+                  </div>
+                  <div class="text-regular white">{item.text2}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div class="home-bottom">
+            <div class="home-avater-wrap">
+              {homeHeroAvaterImageBlockItems.map((unit) => (
+                <div class="avater-image-block" data-anim={unit.anim}>
+                  <Img src={unit.image} alt="Team member portrait" />
+                </div>
+              ))}
+            </div>
+            <div data-anim="Home.Text-Two">
+              <div class="body-text seashell-color">★ Rated 4.9/5 from 50+ growing businesses</div>
+            </div>
+          </div>
+        </div>
+        <div class="home-card">
+          <div class="home-video-block">
+            <BackgroundVideo name="home-v2" class="home-video" data-anim="Home.Video" control></BackgroundVideo>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,73 @@
+---
+import BackgroundVideo from '@/components/ui/BackgroundVideo.astro';
+import SectionTag from '@/components/ui/SectionTag.astro';
+import { contactMainContactInfoBlockItems, contactMainContactToggleBlockItems } from '@/data/sections/contact-v1';
+---
+<section class="section">
+  <div class="container c-container">
+    <div>
+      <div class="contact-grid">
+        <div class="contact-card-v1">
+          <div class="contact-video-block">
+            <BackgroundVideo name="4293956-uhd-3840-2160-25fps" class="contact-card-video" data-anim="Contact.Video" control>
+              <div class="gradient-block"></div>
+            </BackgroundVideo>
+          </div>
+        </div>
+        <div class="contact-card-v2">
+          <div class="contact-card-item">
+            <div class="contact-top">
+              <div class="section-heading left">
+                <SectionTag data-anim="Contact.Tag" label-class="body-text capital-medium">GET IN TOUCH</SectionTag>
+                <div class="section-title-block contact-v1">
+                  <h1 class="section-title" data-anim="Contact.Title">Let’s connect your supply chain</h1>
+                </div>
+                <div class="section-text-block">
+                  <p class="text-regular raisin-black" data-anim="Contact.Text">Have questions about our freight telemetry, automated dispatching, or enterprise integration? Send us a message and our operations team will respond promptly.</p>
+                </div>
+              </div>
+            </div>
+            <div class="contact-info-wrap">
+              {contactMainContactInfoBlockItems.map((item) => (
+                <div class="contact-info-block" data-anim={item.anim}>
+                  <div class="contact-fil"></div>
+                  <div class="contact-info-inner">
+                    <div class="text-regular eriblack-medium">{item.text}</div>
+                    <a href={item.href} target={item.target} class="text-regular contact-lnk">{item.text2}</a>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div>
+              <div class="contact-form-wrap c-form" data-form>
+                <form id="email-form" method="post" class="contact-form">
+                  <div class="contact-toggle-grid">
+                    {contactMainContactToggleBlockItems.map((row) => (
+                      <div class="contact-toggle-block" data-anim={row.anim}>
+                        <label for={row.for} class="contact-form-text">{row.text}</label>
+                        <input maxlength="256" name={row.name} placeholder={row.placeholder} type={row.type} id={row.id} required="" class="contact-toggle-field c-input" />
+                      </div>
+                    ))}
+                    <div class="contact-toggle-block cell-91a33e7baf319a35495d" data-anim="Contact.Toggle2">
+                      <label for="Message" class="contact-form-text">Your Message</label>
+                      <textarea required="" placeholder="Tell us about your shipping requirements, fleet size, or integration questions..." maxlength="5000" id="Message" name="Message" class="contact-message-field c-input"></textarea>
+                    </div>
+                  </div>
+                  <div data-anim="Contact.Toggle3">
+                    <input type="submit" data-wait="Please wait..." value="Send Message" class="contact-button c-button" />
+                  </div>
+                </form>
+                <div class="success-message c-form-done">
+                  <div class="text-regular body-color">Thank you! Your submission has been received!</div>
+                </div>
+                <div class="error-message c-form-fail">
+                  <div class="text-regular body-color">Oops! Something went wrong while submitting the form.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

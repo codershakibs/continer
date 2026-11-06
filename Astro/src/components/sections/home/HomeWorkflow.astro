@@ -1,0 +1,47 @@
+---
+import Img from '@/components/ui/Img.astro';
+import PrimaryButton from '@/components/ui/PrimaryButton.astro';
+import SectionSubHeading from '@/components/ui/SectionSubHeading.astro';
+import { homeWorkflowCargoTabLinkItems, homeWorkflowCargoTabContentBlockItems, homeWorkflowTrackingImageItems } from '@/data/sections/home';
+---
+<section class="section padding-m isabelline-color">
+  <div class="container c-container">
+    <div>
+      <div class="cargo-section-grid">
+        <div class="tracking-card">
+          <div class="tracking-card-item">
+            <div>
+              <SectionSubHeading variant="left" tag="HOW CONTINER WORKS" title="A streamlined 4-step workflow for modern freight operations." />
+            </div>
+            <div class="cargo-center" data-anim="Card.Animation">
+              <div class="cargo-tab-menu" role="tablist">
+                {homeWorkflowCargoTabLinkItems.map((item) => (
+                  <a href="#" class="cargo-tab-link c-inline-block" role="tab">
+                    <div>{item}</div>
+                  </a>
+                ))}
+              </div>
+              <div class="cargo-tab-wrap">
+                {homeWorkflowCargoTabContentBlockItems.map((row) => (
+                  <div class={row}>
+                    <p class="text-regular">From strategic capacity planning and automated carrier matching to active transit monitoring and immediate exception handling — our solution guarantees uninterrupted workflow across all operational touchpoints.</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div class="cargo-bottom" data-anim="items">
+              <PrimaryButton href="/about-v1">More About Us</PrimaryButton>
+            </div>
+          </div>
+        </div>
+        <div class="tracking-card">
+          <div class="tracking-image-block">
+            {homeWorkflowTrackingImageItems.map((cell) => (
+              <Img src={cell.image} alt={cell.alt} class={cell.classes} widths={cell.widths} sizes="100vw" srcset={cell.srcset} />
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

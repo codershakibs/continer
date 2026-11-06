@@ -1,0 +1,19 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+interface Props extends HTMLAttributes<'div'> {
+  'label-class'?: string;
+  /** Rendered as a `<label>` when used inside a form. */
+  as?: 'div' | 'label';
+  for?: string;
+}
+
+const { 'label-class': labelClass = 'body-text capital-medium', as: Label = 'div', for: htmlFor, class: className, ...rest } = Astro.props;
+---
+<div class:list={['section-tag-block', className]} {...rest}>
+  <div class="plus-icon-block">
+    <div class="plus-icon _01"></div>
+    <div class="plus-icon _02"></div>
+  </div>
+  <Label class={labelClass} for={htmlFor}><slot /></Label>
+</div>

@@ -1,0 +1,28 @@
+---
+import Img from '@/components/ui/Img.astro';
+import { aboutIntroBrandLogoMarqueeItems } from '@/data/sections/about-v2';
+---
+<section class="section">
+  <div class="container c-container">
+    <div>
+      <div class="about-summary-block">
+        <div class="text-m" data-anim="Loading.Text">We empower logistics enterprises, fleet operators, and supply chain managers to eliminate blind spots. By unifying live telemetry, automated carrier routing, and predictive analytics into a single interface, Continer transforms complex international trade into a seamless, high-velocity operation.</div>
+      </div>
+    </div>
+  </div>
+  <div class="home-two-logo-block" data-anim="Card.Animation">
+    <div class="brand-logo-content" data-anim="Card.Animation">
+      <div class="brand-logo-marquee-block">
+        {aboutIntroBrandLogoMarqueeItems.map((item) => (
+          <div class="brand-logo-marquee">
+            {item.aboutImageBlockList.map((row) => (
+              <div class={row.classes}>
+                <Img src={row.image} alt="Logistics team and operations" class="about-image" widths={row.widths} sizes={row.sizes} />
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

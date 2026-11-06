@@ -1,0 +1,24 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import ArrowIcon from '@/assets/icons/career-arrow-icon.svg';
+
+interface Props {
+  career: CollectionEntry<'careers'>;
+}
+
+const { career } = Astro.props;
+---
+<a aria-label={`${career.data.title}, ${career.data.location}`} href={`/career/${career.id}`} class="career-card c-inline-block">
+  <div class="career-flex">
+    <div class="career-card-title-block">
+      <div class="text-extra-large white">{career.data.title}</div>
+    </div>
+    <div class="caeer-tag-wrap">
+      <div class="career-tag-block">
+        <div class="body-text body-color-capital">{career.data.location}</div>
+        <div class="body-text body-color-capital">{career.data.schedule}</div>
+      </div>
+      <ArrowIcon class="right-white-aro" />
+    </div>
+  </div>
+</a>
