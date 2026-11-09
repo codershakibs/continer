@@ -277,9 +277,27 @@ function setupStepTimelines() {
   }
 }
 
+/**
+ * Scroll positions are measured once, but the page keeps growing as lazy images load.
+ * Re-measure whenever the page height changes, so reveals and scrubbed timelines start
+ * where the content actually is.
+ */
+function refreshOnLayoutChange() {
+  let timer: number | undefined;
+  let lastHeight = document.body.scrollHeight;
+  new ResizeObserver(() => {
+    const height = document.body.scrollHeight;
+    if (Math.abs(height - lastHeight) < 2) return;
+    lastHeight = height;
+    window.clearTimeout(timer);
+    timer = window.setTimeout(() => ScrollTrigger.refresh(), 150);
+  }).observe(document.body);
+}
+
 export function initScrollAnimations() {
   setupCounters();
   setupStepTimelines();
+  refreshOnLayoutChange();
   if (!prefersMotion()) return;
 
   const start = () => {
