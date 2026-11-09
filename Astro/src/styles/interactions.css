@@ -305,6 +305,15 @@ button.nav-menu-button {
   padding-right: 56px;
 }
 
+/* About B timeline markers before the scroll animation starts: first step reached, rest ahead. */
+.award-fil-bg {
+  color: var(--silver-gray-color);
+}
+
+.award-fil-bg._01 {
+  color: var(--coral-red-color);
+}
+
 /* Rolling counters: equal-width digits so a "1" doesn't leave a gap beside it. */
 .counter-number {
   font-variant-numeric: tabular-nums;

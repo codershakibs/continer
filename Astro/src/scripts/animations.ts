@@ -242,8 +242,44 @@ function setupOverlayGrids() {
   }
 }
 
+/**
+ * About B "Who we are" timeline: the red line fills as the section is scrolled and each step's
+ * marker turns red as the line reaches it, reversing on the way back up. Keyframes are the
+ * original interaction's, as percentages of the scroll range.
+ */
+function setupStepTimelines() {
+  const styles = getComputedStyle(document.documentElement);
+  const red = styles.getPropertyValue('--coral-red-color').trim();
+  const gray = styles.getPropertyValue('--silver-gray-color').trim();
+
+  for (const wrap of gsap.utils.toArray<HTMLElement>('.award-fil-wrap')) {
+    const fill = wrap.querySelector('.awar-fil.brand-color');
+    const markers = Array.from(wrap.querySelectorAll('.award-fil-bg'));
+    if (!fill) continue;
+
+    gsap.set(fill, { height: '0%' });
+    const timeline = gsap.timeline({
+      defaults: { ease: 'none' },
+      scrollTrigger: {
+        trigger: wrap,
+        start: 'top bottom',
+        end: 'bottom 19%',
+        // Scroll-linked, so it follows the user; smoothing only when motion is welcome.
+        scrub: prefersMotion() ? 0.6 : true,
+      },
+    });
+    timeline.to(fill, { height: '100%', duration: 96 }, 0);
+    // Marker n turns red between 18·(n) % and 18·(n + 1) % of the way; the first starts red.
+    markers.slice(1).forEach((marker, index) => {
+      timeline.fromTo(marker, { color: gray }, { color: red, duration: 18 }, 18 * (index + 1));
+    });
+    timeline.to({}, { duration: 100 - timeline.duration() });
+  }
+}
+
 export function initScrollAnimations() {
   setupCounters();
+  setupStepTimelines();
   if (!prefersMotion()) return;
 
   const start = () => {
