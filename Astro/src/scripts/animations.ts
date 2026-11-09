@@ -76,6 +76,8 @@ const SCROLL: Record<string, Preset> = {
   'Sub.Tag': { from: fadeUp('100%', 0.95) },
   'Sub.Title': { from: fadeUp('100%'), split: 'chars', stagger: { amount: 1 }, ease: 'power3.out' },
   'Loading.Text': { from: fadeUp('100%'), split: 'lines', stagger: 0.03 },
+  /** Large intro headings: lines rise through a mask one after another. */
+  'Heading.Lines': { from: fadeUp('100%'), split: 'lines', stagger: 0.1, ease: 'power2.out', start: 'top 90%' },
   'Loading.Card': { from: { y: 60, scale: 0.8 }, duration: 1 },
   'Card.Animation': { from: fadeUp(24), duration: 0.6, start: 'top bottom' },
   items: { from: fadeUp(60), stagger: 0.15, children: true },
