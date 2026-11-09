@@ -4,7 +4,8 @@ import { gsap, ScrollTrigger } from './gsap';
 export function initSmoothScroll() {
   // Lenis re-measures the page when its content element resizes. The base styles give
   // <html> `height: 100%`, so it never resizes; <body> grows with the page, so watch that.
-  const lenis = new Lenis({ lerp: 0.1, wheelMultiplier: 0.9, content: document.body });
+  // `anchors` smooth-scrolls in-page links such as the About C principle menu.
+  const lenis = new Lenis({ lerp: 0.1, wheelMultiplier: 0.9, content: document.body, anchors: true });
   lenis.on('scroll', ScrollTrigger.update);
   gsap.ticker.add((time) => lenis.raf(time * 1000));
   gsap.ticker.lagSmoothing(0);

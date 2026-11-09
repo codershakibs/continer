@@ -4,6 +4,7 @@ import { initFaq } from './faq';
 import { initForms } from './forms';
 import { initHoverText } from './hover-text';
 import { initNavigation } from './navigation';
+import { initScrollSpy } from './scroll-spy';
 import { initSliders } from './slider';
 import { initSmoothScroll } from './smooth-scroll';
 import { initTabs } from './tabs';
@@ -16,6 +17,7 @@ initCargoTabs();
 initSliders();
 initForms();
 initVideos();
+initScrollSpy();
 
 if (document.documentElement.classList.contains('has-motion')) {
   initSmoothScroll();
