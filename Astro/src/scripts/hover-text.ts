@@ -21,7 +21,7 @@ export function initHoverText() {
     for (const link of document.querySelectorAll<HTMLElement>(trigger)) {
       let chars: Element[] | undefined;
       link.addEventListener('pointerenter', () => {
-        chars ??= Array.from(link.querySelectorAll(text)).flatMap((el) => SplitText.create(el, { type: 'chars' }).chars);
+        chars ??= Array.from(link.querySelectorAll(text)).flatMap((el) => SplitText.create(el, { type: 'words,chars' }).chars);
         gsap.to(chars, { y, duration: 0.35, ease: 'power2.out', stagger, overwrite: true });
       });
       link.addEventListener('pointerleave', () => {

@@ -5,6 +5,16 @@ html.has-motion:not(.anim-ready) [data-anim] {
   visibility: hidden;
 }
 
+/* Headings revealed character by character. Split characters can't kern, so kerning is off
+   on these headings at all times: the text is then exactly as wide split as unsplit, and
+   doesn't jump when the animation finishes and the split is removed. */
+[data-anim~='Sub.Title'],
+[data-anim~='Contact.Title'],
+[data-anim~='Privacy.Title'] {
+  font-kerning: none;
+  font-variant-ligatures: none;
+}
+
 /* Elements that are now real buttons keep the look of the original markup. */
 button.nav-dropdown-toggle,
 button.nav-menu-button {

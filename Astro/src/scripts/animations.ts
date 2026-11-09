@@ -102,9 +102,68 @@ function toVars(from: gsap.TweenVars, preset: Preset): gsap.TweenVars {
 
 const select = (token: string) => gsap.utils.toArray<HTMLElement>(`[data-anim~="${token}"]`);
 
+/**
+ * Inserts a line break wherever the text currently wraps and turns off other wrapping,
+ * so the text keeps exactly these lines while it is split. Returns a function that undoes it.
+ */
+function pinLineBreaks(el: HTMLElement) {
+  // Read the width before changing anything: once breaks are inserted, a box sized by its
+  // content would already have shrunk to the longest line. Computed style ignores transforms.
+  const width = getComputedStyle(el).width;
+  const range = document.createRange();
+  const cuts: { node: Text; index: number }[] = [];
+  const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+  let previousTop: number | null = null;
+  for (let node = walker.nextNode() as Text | null; node; node = walker.nextNode() as Text | null) {
+    const words = node.data.matchAll(/\S+/g);
+    for (const word of words) {
+      const index = word.index ?? 0;
+      range.setStart(node, index);
+      range.setEnd(node, index + 1);
+      const top = range.getBoundingClientRect().top;
+      // A word that starts lower than the previous one starts a new line.
+      if (previousTop !== null && top > previousTop + 2) cuts.push({ node, index });
+      previousTop = top;
+    }
+  }
+
+  // Insert from the end so earlier offsets stay valid.
+  for (const { node, index } of cuts.reverse()) {
+    const br = document.createElement('br');
+    br.dataset.pinnedBreak = '';
+    node.parentNode?.insertBefore(br, node.splitText(index));
+  }
+  // Keep the box at its original width, so centered text doesn't move.
+  const inline = { whiteSpace: el.style.whiteSpace, width: el.style.width };
+  el.style.width = width;
+  el.style.whiteSpace = 'nowrap';
+
+  return () => {
+    el.querySelectorAll('br[data-pinned-break]').forEach((br) => br.remove());
+    el.normalize();
+    el.style.whiteSpace = inline.whiteSpace;
+    el.style.width = inline.width;
+  };
+}
+
 /** Splits text, plays through `add`, and restores the original markup so lines reflow on resize. */
 function splitTargets(el: HTMLElement, type: SplitType) {
   gsap.set(el, { autoAlpha: 1 });
+  if (type === 'chars') {
+    // Split characters become separate boxes, so the browser could wrap the text at different
+    // points while it is split, and the heading would jump when the split is removed.
+    // Read where each line breaks in the untouched text, pin those breaks, and stop any other
+    // wrapping while split. The lines then match the final layout exactly.
+    const unpin = pinLineBreaks(el);
+    const split = SplitText.create(el, { type: 'words,chars', mask: 'chars' });
+    return {
+      targets: split.chars as Element[],
+      revert: () => {
+        split.revert();
+        unpin();
+      },
+    };
+  }
   const split = SplitText.create(el, { type, mask: type });
   return { targets: split[type] as Element[], revert: () => split.revert() };
 }
