@@ -168,21 +168,38 @@ button.nav-menu-button {
   transform: scale(1.1);
 }
 
-/* Career rows */
+/* Career rows: at rest the title sits 20px right and the tags 20px / arrow 10px left;
+   on hover they slide into line and turn red (values from the original interaction). */
 .career-card .text-extra-large,
 .career-card .body-text,
 .career-card .right-white-aro {
-  transition: color 0.35s ease, transform 0.35s ease;
+  color: var(--body-color--main-bg);
+  /* Leaving plays the hover in reverse: slow start, speeding up. */
+  transition: color 0.45s cubic-bezier(0.55, 0.085, 0.68, 0.53), transform 0.45s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+}
+
+.career-card .text-extra-large {
+  transform: translateX(20px);
+}
+
+.career-card .body-text {
+  transform: translateX(-20px);
+}
+
+.career-card .right-white-aro {
+  transform: translateX(-10px);
 }
 
 .career-card:hover .text-extra-large,
 .career-card:hover .body-text,
-.career-card:hover .right-white-aro {
+.career-card:hover .right-white-aro,
+.career-card:focus-visible .text-extra-large,
+.career-card:focus-visible .body-text,
+.career-card:focus-visible .right-white-aro {
   color: var(--coral-red-color);
-}
-
-.career-card:hover .right-white-aro {
-  transform: translateX(6px);
+  transform: none;
+  transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition-duration: 0.5s;
 }
 
 /* Service links with a sliding arrow */
