@@ -26,9 +26,11 @@ button.nav-menu-button {
   display: block;
 }
 
-/* Underlined navigation links */
+/* Underlined navigation links: each link shows its own underline on hover or keyboard focus.
+   The "Pages" toggle also keeps its underline while the dropdown is open. The toggle rules
+   target only the toggle, so the links inside the open dropdown are not underlined with it. */
 .button-link .footer-menu-fill,
-.nav-dropdown .footer-menu-fill {
+.nav-dropdown-toggle .footer-menu-fill {
   transform: scaleX(0);
   transform-origin: 0 50%;
   transition: transform 0.4s ease;
@@ -36,8 +38,9 @@ button.nav-menu-button {
 
 .button-link:hover .footer-menu-fill,
 .button-link:focus-visible .footer-menu-fill,
-.nav-dropdown:hover .footer-menu-fill,
-.nav-dropdown.is-open .footer-menu-fill {
+.nav-dropdown-toggle:hover .footer-menu-fill,
+.nav-dropdown-toggle:focus-visible .footer-menu-fill,
+.nav-dropdown.is-open .nav-dropdown-toggle .footer-menu-fill {
   transform: scaleX(1);
 }
 
