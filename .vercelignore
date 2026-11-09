@@ -1,0 +1,11 @@
+# Only the Astro site is deployed. Keep the Webflow export, CSV exports and the CMS out of uploads.
+# Leading slashes anchor these to the repo root, so Astro/src/assets/cms is still uploaded.
+/Template
+/CMS
+/Strapi
+/SKILL.md
+**/node_modules
+/Astro/dist
+/Astro/.astro
+/Astro/.env
+/.env
