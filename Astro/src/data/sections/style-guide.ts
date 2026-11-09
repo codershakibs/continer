@@ -9,28 +9,28 @@ export const styleGuideMainStyleGuideTagItems = [
   {
     href: "#Typography",
     textRegularList: [
-      "01",
+      "02",
       "Typography",
     ],
   },
   {
     href: "#Colors",
     textRegularList: [
-      "02",
+      "03",
       "Colors",
     ],
   },
   {
     href: "#Buttons",
     textRegularList: [
-      "03",
+      "04",
       "Buttons",
     ],
   },
   {
     href: "#Inputs",
     textRegularList: [
-      "04",
+      "05",
       "Inputs",
     ],
   },
