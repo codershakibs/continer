@@ -254,6 +254,50 @@ button.nav-menu-button {
   }
 }
 
+/* Responsive refinements */
+
+/* Home B stat labels wrapped one word per line on tablets and small laptops. */
+.growth-image-text {
+  min-width: min(96px, 100%);
+}
+
+/* FAQ and style guide sidebars were hidden only below 480px; between 480px and 767px
+   they squeezed the main column past the screen edge. */
+@media screen and (max-width: 767px) {
+  .faq-left.hide,
+  .style-guide-left.hide {
+    display: none;
+  }
+}
+
+/* Home A hero: keep the large logo clear of the video's pause button in the corner. */
+.home-banner [data-anim~='Home.Logo'] {
+  padding-right: 56px;
+}
+
+/* Rolling counters: equal-width digits so a "1" doesn't leave a gap beside it. */
+.counter-number {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Home A philosophy quote: on phones the text could be taller than the video behind it.
+   Stack both layers in one grid cell so the section grows to fit the taller one. */
+@media screen and (max-width: 767px) {
+  .section.philosophy {
+    display: grid;
+  }
+
+  .section.philosophy > .philosophy-absolute,
+  .section.philosophy > .philosophy-video-block {
+    grid-area: 1 / 1;
+  }
+
+  .section.philosophy > .philosophy-absolute.v1 {
+    position: relative;
+    max-width: none;
+  }
+}
+
 /* Keyboard focus */
 a:focus-visible,
 button:focus-visible,

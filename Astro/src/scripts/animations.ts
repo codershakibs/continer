@@ -84,15 +84,17 @@ const SCROLL: Record<string, Preset> = {
   'group-children': { from: fadeUp(50), stagger: 0.15, children: true, start: 'top bottom' },
 };
 
+// GSAP writes into the vars objects it receives (gsap.set adds `duration: 0`), so presets are
+// always passed as copies, and only these animated properties are reset in the end state.
 const NEUTRAL: gsap.TweenVars = { autoAlpha: 1, x: 0, y: 0, xPercent: 0, yPercent: 0, scale: 1 };
 
 function toVars(from: gsap.TweenVars, preset: Preset): gsap.TweenVars {
   const to: gsap.TweenVars = {
-    duration: preset.duration ?? 0.8,
+    duration: preset.duration ?? 0.5,
     ease: preset.ease ?? 'power3.out',
     stagger: preset.stagger,
   };
-  for (const key of Object.keys(from)) to[key] = NEUTRAL[key];
+  for (const key of Object.keys(from)) if (key in NEUTRAL) to[key] = NEUTRAL[key];
   return to;
 }
 
@@ -112,10 +114,10 @@ function playLoad() {
       const at = preset.at ?? 0;
       if (preset.split) {
         const { targets, revert } = splitTargets(el, preset.split);
-        timeline.fromTo(targets, preset.from, { ...toVars(preset.from, preset), onComplete: revert }, at);
+        timeline.fromTo(targets, { ...preset.from }, { ...toVars(preset.from, preset), onComplete: revert }, at);
       } else {
         if (!('autoAlpha' in preset.from)) gsap.set(el, { autoAlpha: 1 });
-        timeline.fromTo(el, preset.from, { ...toVars(preset.from, preset), clearProps: 'transform,opacity,visibility' }, at);
+        timeline.fromTo(el, { ...preset.from }, { ...toVars(preset.from, preset), clearProps: 'transform,opacity,visibility' }, at);
       }
     }
   }
@@ -130,7 +132,7 @@ function setupReveal(token: string, preset: Preset) {
     } else {
       if (preset.children) gsap.set(el, { autoAlpha: 1 });
       if (!('autoAlpha' in preset.from)) gsap.set(targets, { autoAlpha: 1 });
-      gsap.set(targets, preset.from);
+      gsap.set(targets, { ...preset.from });
     }
     ScrollTrigger.create({
       trigger: el,
@@ -139,7 +141,7 @@ function setupReveal(token: string, preset: Preset) {
       onEnter: () => {
         if (preset.split) {
           const { targets: parts, revert } = splitTargets(el, preset.split);
-          gsap.fromTo(parts, preset.from, { ...toVars(preset.from, preset), onComplete: revert });
+          gsap.fromTo(parts, { ...preset.from }, { ...toVars(preset.from, preset), onComplete: revert });
         } else {
           gsap.to(targets, { ...toVars(preset.from, preset), clearProps: 'transform,opacity,visibility' });
         }

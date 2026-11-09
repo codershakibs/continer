@@ -7,3 +7,4 @@ gsap.registerPlugin(ScrollTrigger, SplitText);
 export { gsap, ScrollTrigger, SplitText };
 
 export const prefersMotion = () => document.documentElement.classList.contains('has-motion');
+

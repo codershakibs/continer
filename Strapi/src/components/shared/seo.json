@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_shared_seos",
+  "info": {
+    "displayName": "SEO",
+    "icon": "search",
+    "description": "Search and social metadata"
+  },
+  "options": {},
+  "attributes": {
+    "metaDescription": {
+      "type": "text"
+    },
+    "metaImage": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  }
+}

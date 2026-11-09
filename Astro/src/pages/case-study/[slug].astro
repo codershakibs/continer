@@ -1,7 +1,7 @@
 ---
 import type { GetStaticPaths } from 'astro';
 import type { CollectionEntry } from 'astro:content';
-import { Image } from 'astro:assets';
+import CmsImage from '@/components/ui/CmsImage.astro';
 import Base from '@/layouts/Base.astro';
 import SectionTag from '@/components/ui/SectionTag.astro';
 import SectionSubHeading from '@/components/ui/SectionSubHeading.astro';
@@ -33,13 +33,13 @@ const related = all.filter((item) => item.id !== caseStudy.id).slice(0, 2);
           </div>
         </div>
         <div data-anim="Case.Card" class="case-single-image-block">
-          <Image src={data.singleImage} alt={data.title} loading="eager" widths={[800, 1200, 1600]} sizes="100vw" class="case-single-image" />
+          <CmsImage image={data.singleImage} alt={data.title} loading="eager" widths={[800, 1200, 1600]} sizes="100vw" class="case-single-image" />
         </div>
         <div data-anim="Card.Animation" class="case-single-wrap">
           <div class="case-details c-richtext" set:html={intro} />
         </div>
         <div data-anim="Card.Animation" class="case-details-image-block">
-          <Image src={data.detailsImage} alt={data.highlight} widths={[800, 1200, 1600]} sizes="100vw" class="case-details-image" />
+          <CmsImage image={data.detailsImage} alt={data.highlight} widths={[800, 1200, 1600]} sizes="100vw" class="case-details-image" />
         </div>
         <div data-anim="Card.Animation" class="case-details-short-text-block">
           <div class="text-small dark-text">{data.highlight}</div>

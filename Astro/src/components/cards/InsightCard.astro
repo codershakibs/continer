@@ -1,6 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import { Image } from 'astro:assets';
+import CmsImage from '@/components/ui/CmsImage.astro';
 import { formatDate } from '@/lib/content';
 
 interface Props {
@@ -14,7 +14,7 @@ const { author } = post.data;
 <a href={`/blog-posts/${post.id}`} class:list={['insights-link', { revarse: reverse }, 'c-inline-block']}>
   {!reverse && (
     <div class="insights-image-block">
-      <Image src={post.data.image} alt={post.data.title} widths={[500, 800, 1200]} sizes="(max-width: 767px) 100vw, 50vw" class="insights-image" />
+      <CmsImage image={post.data.image} alt={post.data.title} widths={[500, 800, 1200]} sizes="(max-width: 767px) 100vw, 50vw" class="insights-image" />
     </div>
   )}
   <div class="insights-cards">
@@ -35,7 +35,7 @@ const { author } = post.data;
       {author && (
         <div class="insights-bottom">
           <div class="insights-author-block">
-            <Image src={author.image} alt={author.name} widths={[64, 128]} sizes="64px" class="insights-author-image" />
+            <CmsImage image={author.image} alt={author.name} widths={[64, 128]} sizes="64px" class="insights-author-image" />
           </div>
           <div class="dispatch-author-info-block">
             <div class="body-text">{author.name}</div>
@@ -47,7 +47,7 @@ const { author } = post.data;
   </div>
   {reverse && (
     <div class="insights-image-block">
-      <Image src={post.data.image} alt={post.data.title} widths={[500, 800, 1200]} sizes="(max-width: 767px) 100vw, 50vw" class="insights-image" />
+      <CmsImage image={post.data.image} alt={post.data.title} widths={[500, 800, 1200]} sizes="(max-width: 767px) 100vw, 50vw" class="insights-image" />
     </div>
   )}
 </a>

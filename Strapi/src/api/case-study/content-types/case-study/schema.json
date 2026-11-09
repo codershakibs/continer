@@ -1,0 +1,90 @@
+{
+  "kind": "collectionType",
+  "collectionName": "case_studies",
+  "info": {
+    "singularName": "case-study",
+    "pluralName": "case-studies",
+    "displayName": "Case Study"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    },
+    "readTime": {
+      "type": "string"
+    },
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "mainImage": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "singleImage": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "detailsImage": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "singleTag": {
+      "type": "string"
+    },
+    "details1": {
+      "type": "richtext"
+    },
+    "details2": {
+      "type": "richtext"
+    },
+    "shortText": {
+      "type": "string"
+    },
+    "counters": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.counter"
+    },
+    "order": {
+      "type": "integer",
+      "default": 100
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
+    },
+    "webflow": {
+      "type": "component",
+      "repeatable": false,
+      "component": "migration.webflow"
+    }
+  }
+}

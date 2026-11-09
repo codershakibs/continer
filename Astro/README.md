@@ -61,9 +61,18 @@ src/
 
 **Header style.** Pass `header="absolute"` or `header="home-version"` to `Base` on any page.
 
+## Content source: Strapi or Markdown
+
+Blog posts, categories, careers, case studies and services come from one of two sources, and both produce the same pages:
+
+- **Strapi**, when `STRAPI_URL` is set. Entries load at build time through `src/lib/strapi.ts`, and images are downloaded and optimized into the build, so the deployed site never calls the CMS. Set up the CMS in `../Strapi` (see its README); its importer writes `STRAPI_URL` and `STRAPI_TOKEN` to `.env` for you. Strapi must be running when you build.
+- **Markdown**, when `STRAPI_URL` is empty. Content comes from `src/content/` as described below.
+
+The field mapping between the two lives in `src/content.config.ts`.
+
 ## Adding content
 
-Add a Markdown file to a folder in `src/content/`. The file name becomes the URL slug, and `src/content.config.ts` lists the required fields.
+To add content in Markdown mode, add a file to a folder in `src/content/`. The file name becomes the URL slug, and `src/content.config.ts` lists the required fields.
 
 Detail pages place images and callouts between blocks of copy, so separate those blocks with a marker:
 

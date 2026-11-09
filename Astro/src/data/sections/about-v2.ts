@@ -177,23 +177,23 @@ export const aboutAwardsAwardFilBgItems = [
 export const aboutAwardsAwardCardItems = [
   {
     text: "2019 – The Beginning",
-    text2: "Serenique Spa was founded with the vision of creating a calm, restorative sanctuary where personal, intentional, and unhurried. Our focus from the start was quality care.",
+    text2: "Continer was founded to give logistics teams one clear view of their shipments, replacing scattered spreadsheets and phone calls with a single source of truth.",
   },
   {
     text: "2020 – Strengthening Our Standards",
-    text2: "We refined our treatment protocols, enhanced hygiene practices, and invested in therapist training to ensure consistency, safety, and comfort at every visit.",
+    text2: "We expanded our tracking network, introduced live telemetry for fleets, and set the reliability and security standards our platform still runs on today.",
   },
   {
-    text: "2021 – Signature Experiences",
-    text2: "This year marked the launch of our signature spa treatments, blending modern techniques with holistic wellness principles—defining the Serenique Spa experience.",
+    text: "2021 – Smarter Operations",
+    text2: "This year marked the launch of automated route planning and carrier matching, helping operators cut idle time and move freight with fewer delays.",
   },
   {
-    text: "2023 – Expanding Wellness Care",
-    text2: "We grew our team of certified specialists and introduced structured wellness memberships, allowing guests to enjoy consistent, personalized self-care.",
+    text: "2023 – Expanding Global Reach",
+    text2: "We grew our team across three continents and added warehouse automation, giving customers end-to-end visibility from dock to final delivery.",
   },
   {
     text: "2025 – Continuing the Journey",
-    text2: "Today, Serenique Spa continues to evolve with a commitment to mindful wellness, elevated comfort, and long-term balance—guided by care, calm, and expertise.",
+    text2: "Today, Continer continues to evolve with predictive analytics and deeper integrations, helping supply chains stay resilient, efficient, and ready to scale.",
   },
 ] as const;
 

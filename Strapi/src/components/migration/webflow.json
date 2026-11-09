@@ -1,0 +1,35 @@
+{
+  "collectionName": "components_migration_webflows",
+  "info": {
+    "displayName": "Webflow",
+    "icon": "archive",
+    "description": "System fields carried over from the Webflow CSV export"
+  },
+  "options": {},
+  "attributes": {
+    "itemId": {
+      "type": "string"
+    },
+    "collectionId": {
+      "type": "string"
+    },
+    "localeId": {
+      "type": "string"
+    },
+    "archived": {
+      "type": "boolean"
+    },
+    "draft": {
+      "type": "boolean"
+    },
+    "createdOn": {
+      "type": "datetime"
+    },
+    "updatedOn": {
+      "type": "datetime"
+    },
+    "publishedOn": {
+      "type": "datetime"
+    }
+  }
+}

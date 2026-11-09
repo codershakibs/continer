@@ -1,6 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import { Image } from 'astro:assets';
+import CmsImage from '@/components/ui/CmsImage.astro';
 import PrimaryButton from '@/components/ui/PrimaryButton.astro';
 import { formatDate } from '@/lib/content';
 
@@ -15,7 +15,7 @@ const href = `/blog-posts/${post.id}`;
 ---
 <div class="blog-grid" data-anim={anim}>
   <a href={href} class="blog-active-image-block c-inline-block" aria-label={post.data.title}>
-    <Image src={post.data.image} alt={post.data.title} loading="eager" widths={[600, 900, 1200]} sizes="(max-width: 991px) 100vw, 50vw" class="blog-active-image" />
+    <CmsImage image={post.data.image} alt={post.data.title} loading="eager" widths={[600, 900, 1200]} sizes="(max-width: 991px) 100vw, 50vw" class="blog-active-image" />
   </a>
   <div class:list={['blog-active-content-block', 'first', cellClass]}>
     <div class="blog-active-item">

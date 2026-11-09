@@ -12,7 +12,7 @@ import { homeBrandsBrandLogoMarqueeItems, homeBrandsBrandLogoMarqueeRightItems }
             {item.logoCardList.map((row) => (
               <div class="logo-card">
                 <div>
-                  <Img src={row.image} alt={row.alt} class="brand-iocn" />
+                  <Img src={row.image} alt={row.alt} class="brand-iocn" loading="eager" />
                 </div>
                 {row.logoCardAbsoluteList.map((cell) => (
                   <div class={cell}></div>
@@ -30,7 +30,7 @@ import { homeBrandsBrandLogoMarqueeItems, homeBrandsBrandLogoMarqueeRightItems }
             {unit.logoCardList.map((item) => (
               <div class="logo-card">
                 <div>
-                  <Img src={item.image} alt={item.alt} class="brand-iocn" />
+                  <Img src={item.image} alt={item.alt} class="brand-iocn" loading="eager" />
                 </div>
                 {item.logoCardAbsoluteList.map((row) => (
                   <div class={row}></div>

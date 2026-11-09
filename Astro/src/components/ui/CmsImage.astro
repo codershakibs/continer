@@ -1,0 +1,28 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import type { RemoteImage } from '@/lib/strapi';
+
+interface Props {
+  /** A local image from the Markdown collections, or a media file from Strapi. */
+  image: ImageMetadata | RemoteImage;
+  /**
+   * Alt text for this placement. Pass "" for decorative images.
+   * Omit it to use the alternative text stored with the file in Strapi.
+   */
+  alt?: string;
+  class?: string;
+  loading?: 'eager' | 'lazy';
+  widths?: number[];
+  sizes?: string;
+  [key: `data-${string}`]: unknown;
+}
+
+const { image, alt, ...rest } = Astro.props;
+const isRemote = 'remote' in image;
+const text = alt ?? (isRemote ? image.alt : '');
+// Remote files are downloaded at build time, so the deployed site never depends on the CMS host.
+// SVGs keep their format; files without stored dimensions are measured.
+const remoteSize = isRemote && image.width && image.height && !image.src.endsWith('.svg') ? { width: image.width, height: image.height } : { inferSize: true as const };
+---
+{isRemote ? <Image src={image.src} {...remoteSize} alt={text} {...rest} /> : <Image src={image} alt={text} {...rest} />}

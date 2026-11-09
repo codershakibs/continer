@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_shared_counters",
+  "info": {
+    "displayName": "Counter",
+    "icon": "chartBubble",
+    "description": "A headline figure with its label"
+  },
+  "options": {},
+  "attributes": {
+    "value": {
+      "type": "string",
+      "required": true
+    },
+    "label": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

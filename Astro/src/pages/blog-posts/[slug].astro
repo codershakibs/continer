@@ -1,7 +1,7 @@
 ---
 import type { GetStaticPaths } from 'astro';
 import { getCollection, type CollectionEntry } from 'astro:content';
-import { Image } from 'astro:assets';
+import CmsImage from '@/components/ui/CmsImage.astro';
 import Base from '@/layouts/Base.astro';
 import BlogCard from '@/components/cards/BlogCard.astro';
 import Cta from '@/components/sections/shared/Cta.astro';
@@ -66,7 +66,7 @@ const schema = [
                 <div class="blog-details c-richtext" set:html={middle} />
               </div>
               <div class="blog-details-image-block">
-                <Image src={data.detailsImage} alt={data.highlight} widths={[600, 900, 1200]} sizes="(max-width: 991px) 100vw, 50vw" class="blog-details-image" />
+                <CmsImage image={data.detailsImage} alt={data.highlight} widths={[600, 900, 1200]} sizes="(max-width: 991px) 100vw, 50vw" class="blog-details-image" />
               </div>
               <div class="blog-single-text-block">
                 <div class="text-small dark-text">{data.highlight}</div>
@@ -78,7 +78,7 @@ const schema = [
           </div>
           <div class="blog-single-card">
             <div data-anim="Blogs.Card" class="blog-single-image-block">
-              <Image src={data.singleImage} alt={data.title} loading="eager" widths={[600, 900, 1200]} sizes="(max-width: 991px) 100vw, 50vw" class="blog-single-image" />
+              <CmsImage image={data.singleImage} alt={data.title} loading="eager" widths={[600, 900, 1200]} sizes="(max-width: 991px) 100vw, 50vw" class="blog-single-image" />
             </div>
           </div>
         </div>

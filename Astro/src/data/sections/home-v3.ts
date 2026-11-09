@@ -6,7 +6,7 @@ import DispatchCardTopIcon4 from '@/assets/icons/dispatch-card-top-icon4.svg';
 export const homeDispatchBodyTextItems = [
   {
     classes: "body-text body-color",
-    text: "Sabrial Michaels",
+    text: "Sabrina Michaels",
   },
   {
     classes: "body-text isabelline-color",
