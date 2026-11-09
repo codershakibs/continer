@@ -1,8 +1,9 @@
 /**
  * Highlights in-page links (href="#section") while their section is on screen, as Webflow did
  * with `w--current`. A section counts as current while it crosses the middle of the viewport.
- * Between two sections the last one stays highlighted, so the highlight doesn't flicker; above
- * the first and below the last section nothing is highlighted.
+ * Between two sections the last one stays highlighted, so the highlight doesn't flicker. The
+ * first link is highlighted as soon as its section is on screen; once the last section has
+ * scrolled past the middle, nothing is.
  */
 export function initScrollSpy() {
   const links = Array.from(document.querySelectorAll<HTMLAnchorElement>('a[href^="#"]:not([href="#"]):not([role="tab"])'))
@@ -29,6 +30,9 @@ export function initScrollSpy() {
         boxes.forEach((box, index) => {
           if (box.top <= middle) active = index;
         });
+      } else if (first.top > middle && first.top < window.innerHeight) {
+        // The first section is already on screen, just not up to the middle yet.
+        active = 0;
       }
       entries.forEach(({ link }, index) => {
         const current = index === active;

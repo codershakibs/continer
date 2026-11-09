@@ -314,6 +314,20 @@ button.nav-menu-button {
   color: var(--coral-red-color);
 }
 
+/* Side menus on the FAQ and style guide pages: the template's highlight (isabelline) is almost
+   the page color, so the current section was hard to see. Use the About C principle menu's
+   stronger highlight and rounded corners for all three. */
+.faq-tag-block {
+  border-radius: var(--_padding-and-margin---border--border-x);
+}
+
+.faq-tag-block:hover,
+.faq-tag-block.is-current,
+.style-guide-tag:hover,
+.style-guide-tag.is-current {
+  background-color: var(--alabaster-color);
+}
+
 /* Rolling counters: equal-width digits so a "1" doesn't leave a gap beside it. */
 .counter-number {
   font-variant-numeric: tabular-nums;
